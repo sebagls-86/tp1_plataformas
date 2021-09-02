@@ -14,5 +14,17 @@ namespace tp1_plataformas
         string mail;
         string password;
         Carro miCarro;
+
+        protected Usuario(int id)
+        {
+            this.id = id;
+        }
+
+        public override string ToString()
+        {
+            return $"{this.id}, {" - "},{this.dni},{" - "},{this.nombre},{" - "}," +
+                $"{this.apellido},{" - "},{this.mail},{" - "},{this.password}," +
+                $"{" - "}, {this.miCarro}";
+        }
     }
 }

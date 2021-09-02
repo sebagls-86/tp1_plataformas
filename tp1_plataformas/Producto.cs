@@ -13,6 +13,14 @@ namespace tp1_plataformas
         int Cantidad;
         Categoria cat;
 
+        public Producto()
+        {
+        }
 
+        public override string ToString()
+        {
+            return $"{this.id},{" - "}, {this.nombre}, {" - "}, {this.precio}" +
+                $"{this.Cantidad}, {" - "}, {this.cat}";
+        }
     }
 }

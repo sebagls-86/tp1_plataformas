@@ -17,6 +17,11 @@ namespace tp1_plataformas
 
         const int maxCategorias = 10;
         int cantCategorias;
+
+        public Mercado()
+        {
+        }
+
         public void agregarProducto()
         {
 
@@ -128,6 +133,9 @@ namespace tp1_plataformas
 
         }
 
-
+        public override string ToString()
+        {
+            return $"{{}}";
+        }
     }
 }

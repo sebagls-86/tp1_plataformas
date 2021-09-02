@@ -28,7 +28,9 @@ namespace tp1_plataformas
 
     }
 
-
-
+        public override string ToString()
+        {
+            return $"{this.id}, {" - "}, {this.productos}";
+        }
     }
 }

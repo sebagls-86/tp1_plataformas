@@ -9,5 +9,13 @@ namespace tp1_plataformas
         int id;
         string nombre;
 
+        public Categoria()
+        {
+        }
+
+        public override string ToString()
+        {
+            return $"{this.id}, {" - "}, {this.nombre}";
+        }
     }
 }
