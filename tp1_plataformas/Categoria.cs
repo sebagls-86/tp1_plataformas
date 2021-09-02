@@ -6,5 +6,8 @@ namespace tp1_plataformas
 {
     class Categoria
     {
+        int id;
+        string nombre;
+
     }
 }

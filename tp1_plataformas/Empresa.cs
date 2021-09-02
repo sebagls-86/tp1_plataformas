@@ -4,7 +4,8 @@ using System.Text;
 
 namespace tp1_plataformas
 {
-    class Cliente: Usuario
+    class Empresa: Usuario
     {
+        int cuil;
     }
 }

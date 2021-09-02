@@ -4,7 +4,15 @@ using System.Text;
 
 namespace tp1_plataformas
 {
-    class Usuario
+    abstract class Usuario
     {
+
+        int id;
+        int dni;
+        string nombre;
+        string apellido;
+        string mail;
+        string password;
+        Carro miCarro;
     }
 }
