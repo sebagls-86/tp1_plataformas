@@ -19,7 +19,7 @@ namespace tp1_plataformas
         public int Dni { get => dni; set => dni = value; }
         public double Total { get => total; set => total = value; }
         internal Usuario Comprador { get => comprador; set => comprador = value; }
-        internal Dictionary<Producto, Cantidad> Productos { get => productos; set => productos = value; }
+        internal Dictionary<Producto, int> Productos { get => productos; set => productos = value; }
 
         public override string ToString()
         {
