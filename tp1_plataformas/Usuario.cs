@@ -17,14 +17,24 @@ namespace tp1_plataformas
 
         protected Usuario(int id)
         {
-            this.id = id;
+            this.Id = id;
         }
+
+        public int Id { get => id; set => id = value; }
+        public int Dni { get => dni; set => dni = value; }
+        public string Nombre { get => nombre; set => nombre = value; }
+        public string Apellido { get => apellido; set => apellido = value; }
+        public string Mail { get => mail; set => mail = value; }
+        public string Password { get => password; set => password = value; }
+        internal Carro MiCarro { get => miCarro; set => miCarro = value; }
 
         public override string ToString()
         {
-            return $"{this.id}, {" - "},{this.dni},{" - "},{this.nombre},{" - "}," +
-                $"{this.apellido},{" - "},{this.mail},{" - "},{this.password}," +
-                $"{" - "}, {this.miCarro}";
+            return $"{this.Id}, {" - "},{this.Dni},{" - "},{this.Nombre},{" - "}," +
+                $"{this.Apellido},{" - "},{this.Mail},{" - "},{this.Password}," +
+                $"{" - "}, {this.MiCarro}";
         }
+
+
     }
 }
