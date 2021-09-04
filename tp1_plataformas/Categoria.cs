@@ -9,8 +9,21 @@ namespace tp1_plataformas
         int id;
         string nombre;
 
-        public Categoria()
+        public Categoria(int id, string nombre)
         {
+            this.id = id;
+            this.nombre = nombre;
+        }
+
+        public int getIdCategoria()
+        {
+            return this.id;
+        }
+
+        public int setIdCategoria()
+        {
+            this.id = this.id + 1;
+            return this.id;
         }
 
         public override string ToString()

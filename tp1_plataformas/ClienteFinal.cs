@@ -6,7 +6,7 @@ namespace tp1_plataformas
 {
     class ClienteFinal: Usuario
     {
-        int cuil;
+        int dni;
 
         public ClienteFinal(int id) : base(id)
         {
@@ -14,7 +14,7 @@ namespace tp1_plataformas
 
         public override string ToString()
         {
-            return $"{this.cuil}";
+            return $"{this.dni}";
         }
     }
 }
