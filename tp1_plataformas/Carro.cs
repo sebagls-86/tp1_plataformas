@@ -9,8 +9,9 @@ namespace tp1_plataformas
      {
 
         int id;
+        
 
-       Dictionary<Producto, Cantidad> productos = new Dictionary<Producto, Cantidad>();
+       Dictionary<Producto, int> productos = new Dictionary<Producto, int>();
     
 
     public void agregarProducto(Producto P, int Cantidad)
