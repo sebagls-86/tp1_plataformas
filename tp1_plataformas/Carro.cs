@@ -11,7 +11,8 @@ namespace tp1_plataformas
     
         public Carro(int _id, Producto producto, int cantidad) { 
             Id = _id;
-            Productos = new Dictionary<Producto, int>() { producto, cantidad }
+            Productos = new Dictionary<Producto, int>();
+            Productos.Add(producto,cantidad);
         }
 
 
@@ -29,7 +30,7 @@ namespace tp1_plataformas
 
         public override string ToString()
         {
-            return $"{this.id}, {" - "}, {this.productos}";
+            return $"{this.Id}, {" - "}, {this.Productos}";
         }
     }
 }
