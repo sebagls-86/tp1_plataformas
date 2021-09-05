@@ -13,8 +13,7 @@ namespace tp1_plataformas
         public string Apellido { get; set; }
         public string Mail { get; set; }
         public string Password { get; set; }
-        Carro MiCarro;
-        private Carro carro;
+        public Carro MiCarro { get; set; }
 
         protected Usuario(int id, string nombre, string apellido, string mail, string password, Carro carro)
         {
@@ -23,7 +22,7 @@ namespace tp1_plataformas
             Apellido = apellido;
             Mail = mail;
             Password = password;
-            this.carro = carro;
+            MiCarro = carro;
         }
 
         public override string ToString()
