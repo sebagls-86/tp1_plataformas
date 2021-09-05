@@ -6,7 +6,7 @@ namespace tp1_plataformas
 {
     class Empresa: Usuario
     {
-        int cuil;
+        public int Cuil { get; set; }
 
         public Empresa(int id) : base(id)
         {
@@ -14,7 +14,7 @@ namespace tp1_plataformas
 
         public override string ToString()
         {
-            return $"{this.cuil}";
+            return $"{this.Cuil}";
         }
     }
 }

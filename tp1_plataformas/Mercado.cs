@@ -10,7 +10,6 @@ namespace tp1_plataformas
     {
         List<Producto> productos = new List<Producto>();
         List<Usuario> usuarios = new List<Usuario>();
-
         Categoria[] categorias = new Categoria[maxCategorias];
                 
         List<Compra> compras = new List<Compra>();
@@ -22,113 +21,113 @@ namespace tp1_plataformas
         {
         }
 
-        public void agregarProducto()
+        public void AgregarProducto()
         {
 
         }
 
-        public void modificarProducto()
+        public void ModificarProducto()
         {
 
         }
 
-        public void eliminarProducto()
+        public void EliminarProducto()
         {
 
         }
 
-        public void buscarProductos()
+        public void BuscarProductos()
         {
 
         }
 
-        public void buscarProductosPorPrecio()
+        public void BuscarProductosPorPrecio()
         {
 
         }
 
-        public void buscarProductosPorCategoria()
+        public void BuscarProductosPorCategoria()
         {
 
         }
 
 
-        public void agregarUsuario()
+        public void AgregarUsuario()
         {
 
         }
 
-        public void modificarUsuario()
+        public void ModificarUsuario()
         {
 
         }
 
-        public void eliminarUsuario()
+        public void EliminarUsuario()
         {
 
         }
 
-        public void mostrarUsuario()
+        public void MostrarUsuario()
         {
 
         }
 
-        public void agregarCategoria()
+        public void AgregarCategoria()
         {
 
         }
 
-        public void modificarCategoria()
+        public void ModificarCategoria()
         {
 
         }
 
-        public void eliminarCategoria()
+        public void EliminarCategoria()
         {
 
         }
 
-        public void mostrarCategorias()
+        public void MostrarCategorias()
         {
 
         }
 
-        public void agregarAlCarro()
+        public void AgregarAlCarro()
         {
 
         }
 
-        public void quitarDelCarro()
+        public void QuitarDelCarro()
         {
 
         }
 
-        public void vaciarCarro()
+        public void VaciarCarro()
         {
 
         }
 
-        public void comprar()
+        public void Comprar()
         {
 
         }
 
-        public void modificarCompra()
+        public void ModificarCompra()
         {
 
         }
 
-        public void eliminarCompra()
+        public void EliminarCompra()
         {
 
         }
 
-        public void mostrarTodosLosProductosPorPrecio()
+        public void MostrarTodosLosProductosPorPrecio()
         {
 
         }
 
-        public void mostrarTodosLosProductosPorCategoria()
+        public void MostrarTodosLosProductosPorCategoria()
         {
 
         }

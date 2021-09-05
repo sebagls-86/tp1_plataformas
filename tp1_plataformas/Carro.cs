@@ -17,17 +17,16 @@ namespace tp1_plataformas
         }
 
 
-        public void agregarProducto(Producto p, int cantidad)
+        public void AgregarProducto(Producto p, int cantidad) {
+
+        }
+
+        public void QuitarProducto(Producto p, int cantidad)
         {
 
         }
 
-        public void quitarProducto(Producto p, int cantidad)
-        {
-
-        }
-
-        public void vaciar()
+        public void Vaciar()
         {
 
         }

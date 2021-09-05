@@ -7,20 +7,20 @@ namespace tp1_plataformas
     class Producto
     {
 
-        int id;
-        string nombre;
-        Double precio;
-        int Cantidad;
-        Categoria cat;
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+        public Double Precio { get; set; }
+        public int Cantidad { get; set; }
+        Categoria Cat;
 
-        public Producto()
+        public Producto(int Id, string Nombre, Double Precio, int Cantidad, Categoria Cat)
         {
         }
 
         public override string ToString()
         {
-            return $"{this.id},{" - "}, {this.nombre}, {" - "}, {this.precio}" +
-                $"{this.Cantidad}, {" - "}, {this.cat}";
+            return $"{this.Id},{" - "}, {this.Nombre}, {" - "}, {this.Precio}" +
+                $"{this.Cantidad}, {" - "}, {this.Cat}";
         }
     }
 }

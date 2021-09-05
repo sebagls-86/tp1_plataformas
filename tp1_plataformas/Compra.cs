@@ -7,23 +7,18 @@ namespace tp1_plataformas
 {
     class Compra
     {
-        int dni;
-        Usuario comprador;
-        Dictionary<Producto, int> productos = new Dictionary<Producto, int>();
-        Double total;
+        public int Dni { get; set; }
+        Usuario Comprador;
+        Dictionary<Producto, int> Productos { get; set; }
+        public Double Total { get; set; }
 
-        public Compra()
+        public Compra(int dni, Usuario usuario, Producto producto, double total)
         {
         }
 
-        public int Dni { get => dni; set => dni = value; }
-        public double Total { get => total; set => total = value; }
-        internal Usuario Comprador { get => comprador; set => comprador = value; }
-        internal Dictionary<Producto, int> Productos { get => productos; set => productos = value; }
-
         public override string ToString()
         {
-            return $"{this.Dni}, {" - "}, {this.Comprador}, {" - "}, {this.Productos}";
+            return $"{this.Dni}, {" - "}, {this.Comprador}, {" - "}, {this.Productos}, {" - "}, {this.Total}";
         }
     }
 }
