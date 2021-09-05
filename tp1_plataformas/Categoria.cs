@@ -6,16 +6,17 @@ namespace tp1_plataformas
 {
     class Categoria
     {
-        int id;
-        string nombre;
+        public int Id { get; set; }
+        public string Nombre { get; set; }
 
-        public Categoria()
+        public Categoria(int _id, string _nombre)
         {
+           
         }
 
         public override string ToString()
         {
-            return $"{this.id}, {" - "}, {this.nombre}";
+            return $"{this.Id}, {" - "}, {this.Nombre}";
         }
     }
 }
