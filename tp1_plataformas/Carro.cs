@@ -8,23 +8,26 @@ namespace tp1_plataformas
 
         public int Id { get; set; }
         Dictionary<Producto, int> Productos { get; set; }
-    
-        public Carro(int _id, Producto producto, int cantidad) { 
+
+        public Carro(int _id, Producto producto, int cantidad)
+        {
             Id = _id;
             Productos = new Dictionary<Producto, int>();
-            Productos.Add(producto,cantidad);
+            Productos.Add(producto, cantidad);
         }
 
 
-        public void agregarProducto(Producto p, int cantidad) {
+        public void AgregarProducto(Producto p, int cantidad) {
 
         }
 
-        public void quitarProducto(Producto p, int cantidad) {
+        public void QuitarProducto(Producto p, int cantidad)
+        {
 
         }
 
-        public void vaciar()  {
+        public void Vaciar()
+        {
 
         }
 
