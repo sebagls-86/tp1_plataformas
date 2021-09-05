@@ -14,12 +14,17 @@ namespace tp1_plataformas
         public string Mail { get; set; }
         public string Password { get; set; }
         Carro MiCarro;
+        private Carro carro;
 
-        protected Usuario(int Id, int Dni, string Nombre, string Apellido, string Mail, string Password, Carro MiCarro)
+        protected Usuario(int id, string nombre, string apellido, string mail, string password, Carro carro)
         {
-
+            Id = id;
+            Nombre = nombre;
+            Apellido = apellido;
+            Mail = mail;
+            Password = password;
+            this.carro = carro;
         }
-
 
         public override string ToString()
         {
