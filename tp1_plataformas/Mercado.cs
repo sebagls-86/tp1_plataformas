@@ -147,24 +147,41 @@ namespace tp1_plataformas
         {
             foreach (Categoria categoria in categorias)
             {
-                Console.WriteLine("abc");
-
-                if (categorias.GetValue(Nombre).Equals(Nombre))
+                if (categoria.nombre.Equals(Nombre))
                 {
-
+                    Console.WriteLine(categoria.nombre);
                 }
+
+
             }
             return true;
         }
 
         public bool ModificarCategoria(int ID, string Nombre)
         {
+            foreach (Categoria categoria in categorias)
+            {
+                if (categoria.id == ID)
+                {
+                    categoria.nombre = Nombre;
+                }
+            }
+
             return true;
         }
 
-        public void eliminarCategoria()
+        public bool eliminarCategoria(int ID)
         {
 
+            for (int i = 0; i < this.categorias.Length; i++)
+            {
+                if (this.categorias[i].id == ID)
+                {
+                    this.categorias[i] = null;
+                }
+            }
+
+            return true;
         }
 
         public void mostrarCategorias()

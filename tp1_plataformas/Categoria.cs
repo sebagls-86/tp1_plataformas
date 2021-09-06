@@ -6,24 +6,13 @@ namespace tp1_plataformas
 {
     class Categoria
     {
-        int id { get; set; }
-        string nombre { get; set; }
-
+        public int id { get; set; } 
+        public string nombre { get; set; }
+        //string nombre;
         public Categoria(int id, string nombre)
         {
             this.id = id;
             this.nombre = nombre;
-        }
-
-        public int getIdCategoria()
-        {
-            return this.id;
-        }
-
-        public int setIdCategoria()
-        {
-            this.id = this.id + 1;
-            return this.id;
         }
 
         public override string ToString()
