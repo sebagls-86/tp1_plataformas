@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "tp1_plataformas": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "Clave": "Valor"
+      }
+    }
+  }
+}
