@@ -10,29 +10,27 @@ namespace tp1_plataformas
 
             Mercado mercado = new Mercado();
 
-            //Categoria alimentos = new Categoria(1, "Alimentos");
-            //Categoria bebidas = new Categoria(2, "Bebidas");
-            //Console.WriteLine(alimentos.ToString());
+            mercado.agregarCategoria("1");
+            mercado.agregarCategoria("2");
+            mercado.agregarCategoria("3");
+            mercado.agregarCategoria("4");
+            mercado.agregarCategoria("5");
+            mercado.agregarCategoria("6");
+            mercado.agregarCategoria("7");
+            mercado.agregarCategoria("8");
+            mercado.agregarCategoria("9");
+            mercado.agregarCategoria("10");
+            mercado.agregarCategoria("11");
 
-            //Producto producto = new Producto();
+            mercado.imprimirEnPantallaCategorias();
 
-           
-           // mercado.agregarProducto(producto.setIdProducto(), "alimento dos", 10, 1, alimentos.setIdCategoria());
-           
-           // mercado.imprimirEnPantalla();
+            mercado.agregarProducto("Papas Lays", 150, 14, 1);
+            mercado.agregarProducto("Lentejas", 150, 14, 1);
 
-            mercado.agregarCategoria("Alimentos");
-            mercado.agregarCategoria("Bebidas");
-            mercado.agregarCategoria("Lacteos");
+            mercado.imprimirProductoEnPantalla();
 
-            //Producto papasLays = new Producto("Papas Lays", 150, 1, 1);
-            //Producto cocacola = new Producto("Coca Cola", 250, 13, 2);
-            
-            mercado.crearProducto("Papas Lays", 150, 14, 1);
-            //mercado.agregarProducto(producto, 150);
-            //mercado.imprimirEnPantallaCategorias();
-
-            mercado.imprimirEnPantalla();
+            mercado.BuscarCategoria("");
+            //mercado.imprimirEnPantalla(); //producto
 
         }
     }

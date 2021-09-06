@@ -13,7 +13,7 @@ namespace tp1_plataformas
         List<Usuario> usuarios = new List<Usuario>();
 
         Categoria[] categorias = new Categoria[maxCategorias];
-                
+
         List<Compra> compras = new List<Compra>();
 
         const int maxCategorias = 10;
@@ -23,25 +23,72 @@ namespace tp1_plataformas
         {
         }
 
-        public bool crearProducto(string nombre, double precio, int Cantidad, int idCategoria)
+        private int getCategoriaId() //Generamos el ID autoincremental de Categoria
         {
-            int  id = this.productos.Count + 1;
-            
-            Producto producto = new Producto(id, nombre, precio, Cantidad, idCategoria);
-            
-            return true;
+            int contador = 0;
+
+            for (int i = 0; i < this.categorias.Length; i++)
+            {
+                if (this.categorias[i] != null)
+                {
+                    contador++;
+
+                }
+            }
+            return contador + 1;
+        }
+        public bool agregarCategoria(string nombre) //Agregamos una categoria al array de categorias
+        {
+            if (getCategoriaId() <= maxCategorias)
+            {
+
+                int id = getCategoriaId();
+
+                Categoria categoria = new Categoria(id, nombre);
+
+                int auxiliar = 0;
+                int j = 0;
+
+                do
+                {
+                    if (this.categorias[j] == null)
+                    {
+                        this.categorias[j] = categoria;
+                        auxiliar = 1;
+                    }
+                    j++;
+
+                } while (auxiliar == 0);
+
+
+                return true;
+
+            }
+
+            return false;
         }
 
-        public bool agregarProducto(Producto producto, int cantidad)
+        public void imprimirEnPantallaCategorias() //Test pra imprimir categorias en pantalla
         {
-        
+            //Este metodo es para debuguear la creacion de productos e imprimir en pantalla
+            for (int i = 0; i < this.categorias.Length; i++)
+            {
+                Console.WriteLine(this.categorias[i]);
+            }
+        }
+
+        public bool agregarProducto(string nombre, double precio, int Cantidad, int idCategoria)//Creamos producto y lo agregamos al array list de productos
+        {
+            int id = this.productos.Count + 1;
+
+            Producto producto = new Producto(id, nombre, precio, Cantidad, idCategoria);
             this.productos.Add(producto);
             return true;
         }
 
         public void modificarProducto(Producto producto)
         {
-            
+
         }
 
         public void eliminarProducto()
@@ -55,7 +102,7 @@ namespace tp1_plataformas
 
         }
 
-        public void imprimirEnPantalla()
+        public void imprimirProductoEnPantalla()
         {
             //Este es para debuguear la creacion de productos e imprimir en pantalla
             for (int i = 0; i < this.productos.Count; i++)
@@ -96,37 +143,23 @@ namespace tp1_plataformas
 
         }
 
-        public bool agregarCategoria(string nombre)
+        public bool BuscarCategoria(string Nombre)
         {
-
-            //if (this.categorias.Length < maxCategorias)
-            //{
-
-            cantCategorias = cantCategorias + 1;
-
-                Categoria categorias = new Categoria(cantCategorias, nombre);
-               
-                this.categorias[cantCategorias] = categorias;
-
-                return true;
-            //}
-
-            //return false;
-        }
-
-        public void imprimirEnPantallaCategorias()
-        {
-            //Este es para debuguear la creacion de productos e imprimir en pantalla
-            for (int i = 0; i < this.categorias.Length; i++)
+            foreach (Categoria categoria in categorias)
             {
-                Console.WriteLine(this.categorias[i]);
-            }
+                Console.WriteLine("abc");
 
+                if (categorias.GetValue(Nombre).Equals(Nombre))
+                {
+
+                }
+            }
+            return true;
         }
 
-        public void modificarCategoria()
+        public bool ModificarCategoria(int ID, string Nombre)
         {
-
+            return true;
         }
 
         public void eliminarCategoria()

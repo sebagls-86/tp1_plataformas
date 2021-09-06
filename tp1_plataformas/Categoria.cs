@@ -6,8 +6,8 @@ namespace tp1_plataformas
 {
     class Categoria
     {
-        int id;
-        string nombre;
+        int id { get; set; }
+        string nombre { get; set; }
 
         public Categoria(int id, string nombre)
         {
