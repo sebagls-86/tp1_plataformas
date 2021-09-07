@@ -76,13 +76,7 @@ namespace tp1_plataformas
             Carro micarro = new Carro();
             ClienteFinal cliente = new ClienteFinal(id, dni, nombre, apellido, mail, password, micarro, cuil);
             usuarios.Add(cliente);
-            foreach (Usuario usuario in usuarios) {
-                Console.WriteLine($"{usuario}");
-               // Console.WriteLine(usuario.Nombre);
-            }
-            
-
-
+            Console.WriteLine("Usuario creado con exito");
         }
 
         public void ModificarUsuario()
@@ -92,18 +86,7 @@ namespace tp1_plataformas
 
         public void EliminarUsuario(int id)
         {
-            for (int i = 0; i < this.usuarios.Count; i++)
-            {
-                Console.WriteLine(usuarios[i].Id + "-" +usuarios[i].Nombre);
-            }
-
-            usuarios.RemoveAt(id);
-
-            Console.WriteLine("Eliminado con exito");
-            for (int i = 0; i < this.usuarios.Count; i++)
-            {
-                Console.WriteLine(usuarios[i].Id + "-" + usuarios[i].Nombre);
-            }
+            usuarios.RemoveAt(id-1);
         }
 
         public void MostrarUsuario()
