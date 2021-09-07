@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using static tp1_plataformas.Producto;
 namespace tp1_plataformas
 {
@@ -10,29 +10,37 @@ namespace tp1_plataformas
 
             Mercado mercado = new Mercado();
 
-            //Categoria alimentos = new Categoria(1, "Alimentos");
-            //Categoria bebidas = new Categoria(2, "Bebidas");
-            //Console.WriteLine(alimentos.ToString());
+            mercado.agregarCategoria("Categoria 1");
+            mercado.agregarCategoria("Categoria 2");
+            mercado.agregarCategoria("Categoria 3");
+            mercado.agregarCategoria("Categoria 4");
+            mercado.agregarCategoria("Categoria 5");
+            mercado.agregarCategoria("Categoria 6");
+            mercado.agregarCategoria("Categoria 7");
+            mercado.agregarCategoria("Categoria 8");
+            mercado.agregarCategoria("Categoria 9");
+            mercado.agregarCategoria("Categoria 10");
+            mercado.agregarCategoria("Categoria 11");
+            mercado.imprimirEnPantallaCategorias();
 
-            //Producto producto = new Producto();
+            Console.WriteLine("");
 
-           
-           // mercado.agregarProducto(producto.setIdProducto(), "alimento dos", 10, 1, alimentos.setIdCategoria());
-           
-           // mercado.imprimirEnPantalla();
+            mercado.agregarProducto("Papas Lays", 150, 14, 1);
+            mercado.agregarProducto("Lentejas", 150, 14, 1);
 
-            mercado.agregarCategoria("Alimentos");
-            mercado.agregarCategoria("Bebidas");
-            mercado.agregarCategoria("Lacteos");
+            mercado.imprimirProductoEnPantalla();
+            Console.WriteLine("");
 
-            //Producto papasLays = new Producto("Papas Lays", 150, 1, 1);
-            //Producto cocacola = new Producto("Coca Cola", 250, 13, 2);
-            
-            mercado.crearProducto("Papas Lays", 150, 14, 1);
-            //mercado.agregarProducto(producto, 150);
-            //mercado.imprimirEnPantallaCategorias();
+            mercado.BuscarCategoria("Categoria 10");
+            Console.WriteLine("");
 
-            mercado.imprimirEnPantalla();
+
+            mercado.ModificarCategoria(1 , "Pepito");
+            mercado.imprimirEnPantallaCategorias();
+            //mercado.imprimirEnPantalla(); //producto
+
+            mercado.eliminarCategoria(1);
+            mercado.imprimirEnPantallaCategorias();
 
         }
     }
