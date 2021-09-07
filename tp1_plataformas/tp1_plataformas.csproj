@@ -1,24 +1,12 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.810.8
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tp1_plataformas", "tp1_plataformas.csproj", "{33F06485-0058-456A-9522-286F89FB90C1}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{33F06485-0058-456A-9522-286F89FB90C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{33F06485-0058-456A-9522-286F89FB90C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{33F06485-0058-456A-9522-286F89FB90C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{33F06485-0058-456A-9522-286F89FB90C1}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {B8F82692-B7D4-4A6B-92C6-175D0BAB6211}
-	EndGlobalSection
-EndGlobal
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Collections" Version="4.3.0" />
+  </ItemGroup>
+
+</Project>
