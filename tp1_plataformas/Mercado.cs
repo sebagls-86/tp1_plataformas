@@ -17,9 +17,6 @@ namespace tp1_plataformas
         const int maxCategorias = 10;
         int cantCategorias;
 
-        public Mercado()
-        {
-        }
 
         private int getCategoriaId() //Generamos el ID autoincremental de Categoria
         {
@@ -73,8 +70,18 @@ namespace tp1_plataformas
         }
 
 
-        public void AgregarUsuario()
+        public void AgregarUsuario( int dni, String nombre, String apellido, String mail, String password, int cuil)
         {
+            int id = this.usuarios.Count + 1;
+            Carro micarro = new Carro();
+            ClienteFinal cliente = new ClienteFinal(id, dni, nombre, apellido, mail, password, micarro, cuil);
+            usuarios.Add(cliente);
+            foreach (Usuario usuario in usuarios) {
+                Console.WriteLine($"{usuario}");
+               // Console.WriteLine(usuario.Nombre);
+            }
+            
+
 
         }
 
@@ -83,14 +90,29 @@ namespace tp1_plataformas
 
         }
 
-        public void EliminarUsuario()
+        public void EliminarUsuario(int id)
         {
+            for (int i = 0; i < this.usuarios.Count; i++)
+            {
+                Console.WriteLine(usuarios[i].Id + "-" +usuarios[i].Nombre);
+            }
 
+            usuarios.RemoveAt(id);
+
+            Console.WriteLine("Eliminado con exito");
+            for (int i = 0; i < this.usuarios.Count; i++)
+            {
+                Console.WriteLine(usuarios[i].Id + "-" + usuarios[i].Nombre);
+            }
         }
 
         public void MostrarUsuario()
         {
-
+            Console.WriteLine("Estos son los Usuarios registrados:");
+            for (int i = 0; i < this.usuarios.Count; i++)
+            {
+                Console.WriteLine(usuarios[i].Id + "-" + usuarios[i].Nombre + "-" + usuarios[i].Mail + "-" + usuarios[i].Dni);
+            }
         }
 
         public bool AgregarCategoria(string nombre) //Agregamos una categoria al array de categorias

@@ -15,9 +15,11 @@ namespace tp1_plataformas
         public string Password { get; set; }
         public Carro MiCarro { get; set; }
 
-        protected Usuario(int id, string nombre, string apellido, string mail, string password, Carro carro)
+
+        protected Usuario(int id, int dni, string nombre, string apellido, string mail, string password, Carro carro)
         {
             Id = id;
+            Dni = dni;
             Nombre = nombre;
             Apellido = apellido;
             Mail = mail;
@@ -31,7 +33,5 @@ namespace tp1_plataformas
                 $"{this.Apellido},{" - "},{this.Mail},{" - "},{this.Password}," +
                 $"{" - "}, {this.MiCarro}";
         }
-
-
     }
 }

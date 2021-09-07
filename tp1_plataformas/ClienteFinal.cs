@@ -10,10 +10,12 @@ namespace tp1_plataformas
         public int Cuil { get; set; }
 
 
-        public ClienteFinal(int id, int dni, String nombre, String apellido, String mail, String password, Carro carro, int cuil) : base(id, nombre, apellido, mail, password, carro)
+        public ClienteFinal(int id, int dni, String nombre, String apellido, String mail, String password, Carro carro, int cuil) : base(id, dni, nombre, apellido, mail, password, carro)
         {
             Cuil = cuil;
         }
+
+
 
         public override string ToString()
         {
