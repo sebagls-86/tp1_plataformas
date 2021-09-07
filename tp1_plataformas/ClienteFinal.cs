@@ -6,15 +6,20 @@ namespace tp1_plataformas
 {
     class ClienteFinal: Usuario
     {
-        int dni;
 
-        public ClienteFinal(int id) : base(id)
+        public int Cuil { get; set; }
+
+
+        public ClienteFinal(int id, int dni, String nombre, String apellido, String mail, String password, Carro carro, int cuil) : base(id, nombre, apellido, mail, password, carro)
         {
+            Cuil = cuil;
         }
 
         public override string ToString()
         {
-            return $"{this.dni}";
+
+            return $"{this.Cuil}";
+
         }
     }
 }

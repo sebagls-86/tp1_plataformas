@@ -7,26 +7,23 @@ namespace tp1_plataformas
     abstract class Usuario
     {
 
-        int id;
-        int dni;
-        string nombre;
-        string apellido;
-        string mail;
-        string password;
-        Carro miCarro;
+        public int Id { get; set; }
+        public int Dni { get; set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
+        public string Mail { get; set; }
+        public string Password { get; set; }
+        public Carro MiCarro { get; set; }
 
-        protected Usuario(int id)
+        protected Usuario(int id, string nombre, string apellido, string mail, string password, Carro carro)
         {
-            this.Id = id;
+            Id = id;
+            Nombre = nombre;
+            Apellido = apellido;
+            Mail = mail;
+            Password = password;
+            MiCarro = carro;
         }
-
-        public int Id { get => id; set => id = value; }
-        public int Dni { get => dni; set => dni = value; }
-        public string Nombre { get => nombre; set => nombre = value; }
-        public string Apellido { get => apellido; set => apellido = value; }
-        public string Mail { get => mail; set => mail = value; }
-        public string Password { get => password; set => password = value; }
-        internal Carro MiCarro { get => miCarro; set => miCarro = value; }
 
         public override string ToString()
         {

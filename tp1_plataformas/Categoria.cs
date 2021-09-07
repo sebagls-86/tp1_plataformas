@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,29 +6,18 @@ namespace tp1_plataformas
 {
     class Categoria
     {
-        int id;
-        string nombre;
+        public int Id { get; set; }
+        public string Nombre { get; set; }
 
-        public Categoria(int id, string nombre)
+        public Categoria(int _id, string _nombre)
         {
-            this.id = id;
-            this.nombre = nombre;
-        }
-
-        public int getIdCategoria()
-        {
-            return this.id;
-        }
-
-        public int setIdCategoria()
-        {
-            this.id = this.id + 1;
-            return this.id;
+            this.Id = _id;
+            this.Nombre = _nombre;
         }
 
         public override string ToString()
         {
-            return $"{this.id}, {" - "}, {this.nombre}";
+            return $"{this.Id}, {" - "}, {this.Nombre}";
         }
     }
 }
