@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 
 
 namespace tp1_plataformas
@@ -15,22 +13,22 @@ namespace tp1_plataformas
         List<Compra> compras = new List<Compra>();
 
         const int maxCategorias = 10;
-        int cantCategorias;
+        int cantCategorias = 0;
 
 
         private int getCategoriaId() //Generamos el ID autoincremental de Categoria
         {
-            int contador = 0;
+
 
             for (int i = 0; i < this.categorias.Length; i++)
             {
                 if (this.categorias[i] != null)
                 {
-                    contador++;
+                    cantCategorias++;
 
                 }
             }
-            return contador + 1;
+            return cantCategorias + 1;
         }
 
         public bool AgregarProducto(string nombre, double precio, int Cantidad, Categoria idCategoria)//Creamos producto y lo agregamos al array list de productos
@@ -42,35 +40,62 @@ namespace tp1_plataformas
             return true;
         }
 
-        public void ModificarProducto()
+        public bool ModificarProducto(int ID, string Nombre, double Precio, int Cantidad, int ID_Categoria)
         {
+            return true;
+        }
+
+        public bool EliminarProducto(int id)
+        {
+            foreach (Producto producto in productos)
+            {
+                if (producto.Id.Equals(id))
+                {
+
+                    productos.RemoveAll(producto => producto.Id == id);
+                    Console.WriteLine("Producto " + id + " eliminado con éxito!");
+                    break;
+
+                }
+                else
+                {
+                    Console.WriteLine("Producto " + id + " no encontrado!");
+                }
+            }
+            return true;
 
         }
 
-        public void EliminarProducto()
+        public void BuscarProductos(String Query)
         {
+            //Muestra por pantalla, ordenado por Nombre, los productos que 
+            //contienen en su nombre la cadena ingresada por el usuario
+            //para la búsqueda.
+        }
+
+        public void BuscarProductosPorPrecio(String Query)
+        {
+            //Muestra por pantalla, ordenado por Precio de menor a mayor, 
+            //los productos que contienen en su nombre la cadena ingresada 
+            //por el usuario para la búsqueda.
+        }
+
+        public void BuscarProductosPorCategoria(int ID_Categoria)
+        {
+
+            foreach (Producto producto in productos)
+            {
+                if (producto.Cat.Equals(ID_Categoria))
+                {
+                    Console.WriteLine(producto.Nombre);
+                }
+
+            }
 
         }
 
-        public void BuscarProductos()
-        {
 
-        }
-
-        public void BuscarProductosPorPrecio()
-        {
-
-        }
-
-        public void BuscarProductosPorCategoria()
-        {
-
-
-
-        }
-
-
-        public void AgregarUsuario( int dni, String nombre, String apellido, String mail, String password, int cuil)
+        public void AgregarUsuario(int dni, String nombre, String apellido, String mail, String password, int cuil)
         {
             int id = this.usuarios.Count + 1;
             Carro micarro = new Carro();
@@ -79,14 +104,41 @@ namespace tp1_plataformas
             Console.WriteLine("Usuario creado con exito");
         }
 
-        public void ModificarUsuario()
+        public bool ModificarUsuario(int ID, string Nombre)
         {
+            foreach (Usuario usuario in usuarios)
+            {
+                if (usuario.Id == ID)
+                {
+                    usuario.Nombre = Nombre;
+                }
+            }
 
+            return true;
         }
 
-        public void EliminarUsuario(int id)
+
+
+        public bool EliminarUsuario(int id)
         {
-            usuarios.RemoveAt(id-1);
+
+            foreach (Usuario usuario in usuarios)
+            {
+                if (usuario.Id.Equals(id))
+                {
+                    usuarios.RemoveAll(usuario => usuario.Id == id);
+                    Console.WriteLine("Usuario " + id + " eliminado con éxito!");
+                    break;
+
+                }
+                else
+                {
+                    Console.WriteLine("Usuario " + id + " no encontrado!");
+                }
+
+            }
+            return true;
+
         }
 
         public void MostrarUsuario()
@@ -172,47 +224,94 @@ namespace tp1_plataformas
 
         public void MostrarCategorias()
         {
-
+            for (int i = 0; i < this.categorias.Length; i++)
+            {
+                Console.WriteLine(this.categorias[i]);
+            }
         }
 
-        public void AgregarAlCarro()
+        public bool AgregarAlCarro(int ID_Producto, int Cantidad, int ID_Usuario)
         {
+         //   Pide al usuario el carro.
+         //   Si el parámetro Cantidad es menor a la Cantidad(atributo) del producto 
+         //       “ID_Producto” (hay stock), agrega el Producto al carro del usuario.
+        	//Si no hay stock devuelve falso. 
+        	//Nota: En este punto no decremento el atributo Cantidad en la clase Producto
+         //       ya que el usuario todavía NO realizó la compra.
 
+            return true;
         }
 
-        public void QuitarDelCarro()
+        public bool QuitarDelCarro(int ID_Producto, int Cantidad, int ID_Usuario)
         {
 
+           //Disminuye la cantidad del producto ID_Producto en el carro del usuario.
+
+
+            return true;
         }
 
-        public void VaciarCarro()
+        public bool VaciarCarro(int ID_Usuario)
         {
-
+            //vacía el carro del usuario.
+            return true;
         }
 
-        public void Comprar()
+        public bool Comprar(int ID_Usuario)
         {
 
+            //   Busca el usuario pasado como parámetro 
+        	
+            //Le pide su carro y a este los productos con la cantidad respectiva.
+        	
+            //En base a esto calcula el total según el tipo de usuario, 
+         //       a la hora de hacer una compra existe una diferencia si el usuario es
+         //       ClienteFinal o Empresa ya que este último paga 21 % menos(descuenta IVA),
+         //       esto se debe ver reflejado en el total de la compra.
+        	
+            //Crea un nuevo elemento compra con el detalle necesario
+         //       (ID auto - incremental, Comprador = ID_Usuario, Productos copiando los
+         //       elementos del carrito a un nuevo diccionario(¡cuidado con las referencias!)
+         //       y el total según calculado).
+        	
+            //Disminuye el stock de los productos según lo comprado por el usuario. 
+        	
+            //Luego vacía el carrito del usuario. 
+        	
+            //Muestra el resultado por pantalla(ToString de la compra recientemente creada) 
+         //       y devuelve el valor correspondiente indicando si la ejecución fue correcta.
+
+
+            return true;
         }
 
-        public void ModificarCompra()
+        public bool ModificarCompra(int ID, double Total)
         {
 
+            //Solo se permite modificar el total en caso que haya un error de facturación.
+            //El resto de los datos no pueden ser modificados.
+
+            return true;
         }
 
-        public void EliminarCompra()
+        public bool EliminarCompra(int ID)
         {
+            // Nuestro “botón de arrepentimiento”…
 
+            return true;
         }
 
         public void MostrarTodosLosProductosPorPrecio()
         {
 
+           
+            // Muestra todos los productos del mercado ordenados por precio.
         }
 
         public void MostrarTodosLosProductosPorCategoria()
         {
-
+            //Muestra todas las categorías del mercado y para cada una de ellas 
+            //    los productos dentro de la misma.
         }
 
         public override string ToString()

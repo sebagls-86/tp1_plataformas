@@ -14,7 +14,9 @@ namespace tp1_plataformas
             mercado.AgregarUsuario(42874751, "Lopez", "Ricardo", "ricardolopez2000@gmail.com", "pepito", 20);
             mercado.AgregarUsuario(42874751, "Ropez", "Picardo", "ricardolopez2000@gmail.com", "pepito", 20);
             Console.WriteLine("-----!!!!!------");
+            mercado.MostrarUsuario();
             mercado.EliminarUsuario(1);
+            mercado.EliminarUsuario(5);
             Console.WriteLine("-----!!!!!------");
             mercado.MostrarUsuario();
             //mercado.AgregarCategoria("Categoria 1");
