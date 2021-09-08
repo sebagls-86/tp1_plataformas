@@ -78,16 +78,47 @@ namespace tp1_plataformas
 
         public void BuscarProductos(String Query)
         {
-            //Muestra por pantalla, ordenado por Nombre, los productos que 
-            //contienen en su nombre la cadena ingresada por el usuario
-            //para la búsqueda.
+            List<Producto> productosBuscados = new List<Producto>();
+
+            foreach (Producto producto in productos)
+            {
+                if (producto.Nombre.Contains(Query))
+                {
+                    
+                    productosBuscados.Add(producto);
+                }
+               
+            }
+            var ordenada = productosBuscados.OrderBy(producto => producto.Nombre);
+            foreach (Producto p in ordenada)
+            {
+                Console.WriteLine(p.Nombre + " - " + p.Precio);
+            }
+           
+            
         }
 
         public void BuscarProductosPorPrecio(String Query)
         {
-            //Muestra por pantalla, ordenado por Precio de menor a mayor, 
-            //los productos que contienen en su nombre la cadena ingresada 
-            //por el usuario para la búsqueda.
+            List<Producto> productosBuscados = new List<Producto>();
+
+            foreach (Producto producto in productos)
+            {
+                if (producto.Nombre.Contains(Query))
+                {
+
+                    productosBuscados.Add(producto);
+                }
+
+            }
+            var ordenada = productosBuscados.OrderByDescending(producto => producto.Nombre).ThenBy(producto => producto.Precio);
+            foreach (Producto p in ordenada)
+            {
+                
+                Console.WriteLine("{0} - {1}", p.Nombre, p.Precio);
+
+            }
+            
         }
 
         public void BuscarProductosPorCategoria(int ID_Categoria)

@@ -41,9 +41,11 @@ namespace tp1_plataformas
 
             Console.WriteLine("");
 
-            mercado.AgregarProducto("Papas Lays", 150, 14, 1);
-            mercado.AgregarProducto("Lentejas", 130, 14, 2);
-            mercado.AgregarProducto("Garbanzos", 120, 14, 2);
+            mercado.AgregarProducto("Papas Lays", 150, 1, 1);
+            mercado.AgregarProducto("Lentejas", 140, 14, 2);
+            mercado.AgregarProducto("Garbanzos", 180, 3, 2);
+            mercado.AgregarProducto("Lentejas2", 130, 16, 2);
+            
 
             mercado.imprimirProductoEnPantalla();
             //Console.WriteLine("");
@@ -66,8 +68,12 @@ namespace tp1_plataformas
             Console.WriteLine("-----!!!!!------");
             Console.WriteLine("-----PRODUCTOS POR CATEGORIA------");
             mercado.MostrarTodosLosProductosPorCategoria();
+            Console.WriteLine("-----!!PRODUCTO BUSCADO POR NOMBRE LIKE!!!------");
+            mercado.BuscarProductos("L");
 
-            
+            Console.WriteLine("-----!!!!!------");
+            Console.WriteLine("-----!!PRODUCTO BUSCADO POR NOMBRE ORDENADO POR PRECIO DE MENOR A MAYOR!!!------");
+            mercado.BuscarProductosPorPrecio("Lent");
         }
     }
 }
