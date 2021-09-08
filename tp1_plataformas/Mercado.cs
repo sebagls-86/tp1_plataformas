@@ -140,7 +140,7 @@ namespace tp1_plataformas
         {
 
             int id = this.usuarios.Count + 1;
-            Carro micarro = new Carro();
+            Carro micarro = new Carro(id);
             if (esEmpresa)
             {
                 Empresa empresa = new Empresa(id, dni, nombre, apellido, mail, password, micarro, cuil);

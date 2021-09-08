@@ -17,8 +17,10 @@ namespace tp1_plataformas
             Productos.Add(producto, cantidad);
         }
 
-        public Carro()
+        public Carro(int id)
         {
+            Id = id;
+            Productos = new Dictionary<Producto, int>();
         }
 
         public bool AgregarProducto(Producto p, int cantidad)
