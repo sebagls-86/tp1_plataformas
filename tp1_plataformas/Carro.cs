@@ -17,6 +17,9 @@ namespace tp1_plataformas
             Productos.Add(producto, cantidad);
         }
 
+        public Carro()
+        {
+        }
 
         public bool AgregarProducto(Producto p, int cantidad)
         {

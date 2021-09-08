@@ -8,7 +8,7 @@ namespace tp1_plataformas
     {
         public int Cuil { get; set; }
 
-        public Empresa(int id, int dni, String nombre, String apellido, String mail, String password,Carro carro, int cuil) : base(id, nombre, apellido, mail, password, carro)
+        public Empresa(int id, int dni, String nombre, String apellido, String mail, String password,Carro carro, int cuil) : base(id, dni, nombre, apellido, mail, password, carro)
         {
             Cuil = cuil;
         }

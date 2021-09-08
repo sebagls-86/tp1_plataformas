@@ -11,7 +11,7 @@ namespace tp1_plataformas
         public string Nombre { get; set; }
         public Double Precio { get; set; }
         public int Cantidad { get; set; }
-        Categoria Cat { get; set; }
+        public Categoria Cat { get; set; }
 
         public Producto(int Id, string Nombre, Double Precio, int Cantidad, Categoria Cat)
         {
