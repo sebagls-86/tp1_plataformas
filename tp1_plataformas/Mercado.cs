@@ -6,13 +6,21 @@ namespace tp1_plataformas
 {
     class Mercado
     {
-        List<Producto> productos = new List<Producto>();
-        List<Usuario> usuarios = new List<Usuario>();
-        Categoria[] categorias = new Categoria[maxCategorias];
+        public List<Producto> productos { get; set; }
+        public List<Usuario> usuarios { get; set; }
+        public Categoria[] categorias { get; set; }
 
-        List<Compra> compras = new List<Compra>();
+        public List<Compra> compras { get; set; }
 
         const int maxCategorias = 10;
+
+        public Mercado()
+        {
+            productos = new List<Producto>();
+            usuarios = new List<Usuario>();
+            compras = new List<Compra>();
+            categorias = new Categoria[maxCategorias];
+        }
 
         private int getCategoriaId() //Generamos el ID autoincremental de Categoria
         {
@@ -84,18 +92,18 @@ namespace tp1_plataformas
             {
                 if (producto.Nombre.Contains(Query))
                 {
-                    
+
                     productosBuscados.Add(producto);
                 }
-               
+
             }
             var ordenada = productosBuscados.OrderBy(producto => producto.Nombre);
             foreach (Producto p in ordenada)
             {
                 Console.WriteLine(p.Nombre + " - " + p.Precio);
             }
-           
-            
+
+
         }
 
         public void BuscarProductosPorPrecio(String Query)
@@ -114,11 +122,11 @@ namespace tp1_plataformas
             var ordenada = productosBuscados.OrderByDescending(producto => producto.Nombre).ThenBy(producto => producto.Precio);
             foreach (Producto p in ordenada)
             {
-                
+
                 Console.WriteLine("{0} - {1}", p.Nombre, p.Precio);
 
             }
-            
+
         }
 
         public void BuscarProductosPorCategoria(int ID_Categoria)
@@ -296,17 +304,43 @@ namespace tp1_plataformas
             }
         }
 
-        public bool AgregarAlCarro(int ID_Producto, int Cantidad, int ID_Usuario)
+        public bool AgregarAlCarro(int Id_Producto, int Cantidad, int Id_Usuario)
         {
-            //   Pide al usuario el carro.
-            //   Si el parámetro Cantidad es menor a la Cantidad(atributo) del producto 
-            //       “ID_Producto” (hay stock), agrega el Producto al carro del usuario.
-            //Si no hay stock devuelve falso. 
-            //Nota: En este punto no decremento el atributo Cantidad en la clase Producto
-            //       ya que el usuario todavía NO realizó la compra.
-
-            return true;
+            bool sePudoAgregar = false;
+            Usuario usuarioEncontrado;
+            Producto productoEncontrado;
+            if (MercadoHelper.SonMenoresACero(new List<int> { Id_Producto, Cantidad, Id_Usuario }))
+            {
+                Console.WriteLine("Los parametros numericos deben ser mayor o igual a 0");
+            }
+            else if (!MercadoHelper.ExisteElUsuario(Id_Usuario, usuarios))
+            {
+                Console.WriteLine("El usuario con id {0} no se pudo encontrar", Id_Usuario);
+            }
+            else if (!MercadoHelper.ExisteElProducto(Id_Producto,productos))
+            {
+                Console.WriteLine("El producto con id {0} no se pudo encontrar", Id_Producto);
+            }
+            else
+            {
+                usuarioEncontrado = usuarios.Find(usuario => usuario.Id == Id_Usuario);
+                productoEncontrado = productos.Find(producto => producto.Id == Id_Producto);
+                if (Cantidad > productoEncontrado.Cantidad)
+                {
+                    Console.WriteLine("La cantidad que se quiere agregar es mayor al stock disponible.");
+                }
+                else
+                {
+                    productoEncontrado.Cantidad--;
+                    usuarioEncontrado.MiCarro.AgregarProducto(productoEncontrado, Cantidad);
+                    sePudoAgregar = true;
+                    Console.WriteLine("El producto {0} se ha añadido al carro del usuario {1}.", productoEncontrado.Nombre, usuarioEncontrado.Nombre);
+                }
+            }
+            return sePudoAgregar;
         }
+
+        
 
         public bool QuitarDelCarro(int ID_Producto, int Cantidad, int ID_Usuario)
         {
@@ -393,7 +427,7 @@ namespace tp1_plataformas
                     }
                 }
             }
-            
+
         }
 
         public override string ToString()
@@ -410,6 +444,6 @@ namespace tp1_plataformas
             }
 
         }
-        
+
     }
 }

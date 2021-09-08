@@ -4,7 +4,7 @@ using System.Text;
 
 namespace tp1_plataformas
 {
-    class Carro
+    public class Carro
     {
 
         public int Id { get; set; }
