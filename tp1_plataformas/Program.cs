@@ -45,7 +45,7 @@ namespace tp1_plataformas
             mercado.AgregarProducto("Lentejas", 140, 14, 2);
             mercado.AgregarProducto("Garbanzos", 180, 3, 2);
             mercado.AgregarProducto("Lentejas2", 130, 16, 2);
-
+            
 
             mercado.imprimirProductoEnPantalla();
             //Console.WriteLine("");

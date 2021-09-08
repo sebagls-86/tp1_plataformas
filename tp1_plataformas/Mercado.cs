@@ -117,11 +117,8 @@ namespace tp1_plataformas
                 
                 Console.WriteLine("{0} - {1}", p.Nombre, p.Precio);
 
-                //Console.WriteLine(p.Nombre + " - " + p.Precio);
             }
-            //Muestra por pantalla, ordenado por Precio de menor a mayor, 
-            //los productos que contienen en su nombre la cadena ingresada 
-            //por el usuario para la búsqueda.
+            
         }
 
         public void BuscarProductosPorCategoria(int ID_Categoria)
