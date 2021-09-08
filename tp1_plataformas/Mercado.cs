@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-
+using System.Linq;
 
 namespace tp1_plataformas
 {
@@ -338,15 +338,31 @@ namespace tp1_plataformas
 
         public void MostrarTodosLosProductosPorPrecio()
         {
+            var productoPorPrecio = productos.OrderBy(producto => producto.Precio);
+            foreach (Producto p in productoPorPrecio)
+            {
+                Console.WriteLine(p);
+            }
 
 
-            // Muestra todos los productos del mercado ordenados por precio.
         }
 
         public void MostrarTodosLosProductosPorCategoria()
         {
-            //Muestra todas las categorías del mercado y para cada una de ellas 
-            //    los productos dentro de la misma.
+
+            for (int i = 0; i < this.categorias.Length; i++)
+            {
+                Console.WriteLine(this.categorias[i]);
+
+                foreach (Producto producto in productos)
+                {
+                    if (producto.Cat.Equals(this.categorias[i]))
+                    {
+                        Console.WriteLine(producto.Nombre);
+                    }
+                }
+            }
+            
         }
 
         public override string ToString()
@@ -363,13 +379,6 @@ namespace tp1_plataformas
             }
 
         }
-        public void imprimirEnPantallaCategorias() //Test pra imprimir categorias en pantalla
-        {
-            //Este metodo es para debuguear la creacion de productos e imprimir en pantalla
-            for (int i = 0; i < this.categorias.Length; i++)
-            {
-                Console.WriteLine(this.categorias[i]);
-            }
-        }
+        
     }
 }
