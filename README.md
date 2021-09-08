@@ -27,28 +27,21 @@ _Clonar repositorio_
 $ git clone https://github.com/sebagls-86/tp1_plataformas.git
 ```
 
-_bla bla bla_
 
-- Crear una nueva base de datos
-- Con la base de datos seleccionada importar el siguiente archivo
-
-```
-/db/Crea_db_bardo_libreria.sql 
-```
-
-_Modificar config.json con tus datos de conexion_
-
-```
-/config/config.json
 ```
 
 ## Autores
 
+
 * **Calleja Horacio** - [HoracioCalleja](https://github.com/HoracioCalleja)
+* **Nicolas Cohen** - [ncs1020](https://github.com/ncs1020)
 * **Kim Anastasia** - [aniibk](https://github.com/aniibk)
 * **Kukuchka Marcos** - [marcoskukuchka](https://github.com/marcoskukuchka)
-* **Lopez Sosa Sebastian** - [seba](https://github.com/sebagls-86)
+* ** Emmanuel Lopez** - [h-kANAME](https://github.com/h-kANAME)
+* **Lopez Sosa Sebastian** - [sebagls-86](https://github.com/sebagls-86)
+* **Motzo Franco** - [MotzoFranco](https://github.com/MotzoFranco)
+
 
 ## Profesor ✒️
 
-* **Andrea Abrudsky** - [aabrudsky](https://github.com/aabrudsky)
+* **Walter Matías Gomez** - 
