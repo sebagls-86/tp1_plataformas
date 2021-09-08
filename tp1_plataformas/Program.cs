@@ -11,46 +11,56 @@ namespace tp1_plataformas
             Mercado mercado = new Mercado();
 
 
-            mercado.AgregarUsuario(42874751, "franco", "Motzo", "francomotzo2000@gmail.com", "pepito", 20);
-            mercado.AgregarUsuario(42874751, "Lopez", "Ricardo", "ricardolopez2000@gmail.com", "pepito", 20);
-            mercado.AgregarUsuario(42874751, "Ropez", "Picardo", "ricardolopez2000@gmail.com", "pepito", 20);
+            mercado.AgregarUsuario(42874751, "franco", "Motzo", "francomotzo2000@gmail.com", "pepito", 20, true);
+            mercado.AgregarUsuario(42874751, "Lopez", "Ricardo", "ricardolopez2000@gmail.com", "pepito", 20, false);
+            mercado.AgregarUsuario(42874751, "Ropez", "Picardo", "ricardolopez2000@gmail.com", "pepito", 20, false);
             Console.WriteLine("-----!!!!!------");
             mercado.MostrarUsuario();
-            mercado.EliminarUsuario(1);
-            mercado.EliminarUsuario(5);
+            //mercado.EliminarUsuario(3);
+            //mercado.EliminarUsuario(5);
             Console.WriteLine("-----!!!!!------");
+ 
+
+
+            Console.WriteLine("-----Modifico Usuarios------");
+            mercado.ModificarUsuario(1, 35233665, "Emma", "KuCohen", "ElMasK09@gmail.com", "CLABE", 30, true);
+            //mercado.ModificarUsuario(1, 35233665, "Emma", "KuCohen", "ElMasK09@gmail.com", "CLABE", 30, true);          
             mercado.MostrarUsuario();
-            //mercado.AgregarCategoria("Categoria 1");
-            //mercado.AgregarCategoria("Categoria 2");
-            //mercado.AgregarCategoria("Categoria 3");
-            //mercado.AgregarCategoria("Categoria 4");
-            //mercado.AgregarCategoria("Categoria 5");
-            //mercado.AgregarCategoria("Categoria 6");
-            //mercado.AgregarCategoria("Categoria 7");
-            //mercado.AgregarCategoria("Categoria 8");
-            //mercado.AgregarCategoria("Categoria 9");
-            //mercado.AgregarCategoria("Categoria 10");
-            //mercado.AgregarCategoria("Categoria 11");
-            //mercado.imprimirEnPantallaCategorias();
 
-            //Console.WriteLine("");
+            Console.WriteLine("-----CATEGORIAS------");
+            mercado.AgregarCategoria("Categoria 1");
+            mercado.AgregarCategoria("Categoria 2");
+            mercado.AgregarCategoria("Categoria 3");
+            mercado.AgregarCategoria("Categoria 4");
+            mercado.AgregarCategoria("Categoria 5");
+            mercado.AgregarCategoria("Categoria 6");
+            mercado.AgregarCategoria("Categoria 7");
+            mercado.AgregarCategoria("Categoria 8");
+            mercado.AgregarCategoria("Categoria 9");
+            mercado.AgregarCategoria("Categoria 10");
+            mercado.AgregarCategoria("Categoria 11");
+            mercado.imprimirEnPantallaCategorias();
 
-            //mercado.AgregarProducto("Papas Lays", 150, 14, 1);
-            //mercado.AgregarProducto("Lentejas", 150, 14, 1);
+            Console.WriteLine("");
 
-            //mercado.imprimirProductoEnPantalla();
+            mercado.AgregarProducto("Papas Lays", 150, 14, 1);
+            mercado.AgregarProducto("Lentejas", 150, 14, 2);
+
+            mercado.imprimirProductoEnPantalla();
             //Console.WriteLine("");
 
             //mercado.BuscarCategoria("Categoria 10");
             //Console.WriteLine("");
 
 
-            //mercado.ModificarCategoria(1 , "Pepito");
+            mercado.ModificarCategoria(1 , "Pepito");
+            mercado.imprimirProductoEnPantalla();
             //mercado.imprimirEnPantallaCategorias();
             //mercado.imprimirEnPantalla(); //producto
 
-            //mercado.EliminarCategoria(1);
-            //mercado.imprimirEnPantallaCategorias();
+            mercado.EliminarCategoria(1);
+            mercado.imprimirEnPantallaCategorias();
+            mercado.imprimirProductoEnPantalla();
 
 
         }

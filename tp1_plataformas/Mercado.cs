@@ -13,12 +13,10 @@ namespace tp1_plataformas
         List<Compra> compras = new List<Compra>();
 
         const int maxCategorias = 10;
-        int cantCategorias = 0;
-
 
         private int getCategoriaId() //Generamos el ID autoincremental de Categoria
         {
-
+            int cantCategorias = 0;
 
             for (int i = 0; i < this.categorias.Length; i++)
             {
@@ -31,12 +29,24 @@ namespace tp1_plataformas
             return cantCategorias + 1;
         }
 
-        public bool AgregarProducto(string nombre, double precio, int Cantidad, Categoria idCategoria)//Creamos producto y lo agregamos al array list de productos
+        public bool AgregarProducto(string nombre, double precio, int Cantidad, int idCategoria)//Creamos producto y lo agregamos al array list de productos
         {
             int id = this.productos.Count + 1;
 
-            Producto producto = new Producto(id, nombre, precio, Cantidad, idCategoria);
-            this.productos.Add(producto);
+
+            for (int i = 0; i < this.categorias.Length; i++)
+            {
+
+                if (categorias[i] != null && categorias[i].Id == idCategoria)
+                {
+                    Producto producto = new Producto(id, nombre, precio, Cantidad, categorias[i]);
+                    this.productos.Add(producto);
+                }
+
+
+
+            }
+
             return true;
         }
 
@@ -95,22 +105,47 @@ namespace tp1_plataformas
         }
 
 
-        public void AgregarUsuario(int dni, String nombre, String apellido, String mail, String password, int cuil)
+        public void AgregarUsuario(int dni, String nombre, String apellido, String mail, String password, int cuil, bool esEmpresa)
         {
+
             int id = this.usuarios.Count + 1;
             Carro micarro = new Carro();
-            ClienteFinal cliente = new ClienteFinal(id, dni, nombre, apellido, mail, password, micarro, cuil);
-            usuarios.Add(cliente);
-            Console.WriteLine("Usuario creado con exito");
-        }
-
-        public bool ModificarUsuario(int ID, string Nombre)
-        {
-            foreach (Usuario usuario in usuarios)
+            if (esEmpresa)
             {
-                if (usuario.Id == ID)
+                Empresa empresa = new Empresa(id, dni, nombre, apellido, mail, password, micarro, cuil);
+                usuarios.Add(empresa);
+                Console.WriteLine("La empresa fue creada con exito");
+            }
+            else
+            {
+                ClienteFinal cliente = new ClienteFinal(id, dni, nombre, apellido, mail, password, micarro, cuil);
+                usuarios.Add(cliente);
+                Console.WriteLine("Usuario creado con exito");
+            }
+
+        }
+        public bool ModificarUsuario(int ID, int DNI, string Nombre, string Apellido, string Mail, string Password, int CUIT_CUIL, bool EsEmpresa)
+        {
+
+            for (int i = 0; i < this.usuarios.Count; i++)
+            {
+                if (usuarios[i].Id == ID)
                 {
-                    usuario.Nombre = Nombre;
+                    usuarios[i].Nombre = Nombre;
+                    usuarios[i].Apellido = Apellido;
+                    usuarios[i].Dni = DNI;
+                    usuarios[i].Mail = Mail;
+                    usuarios[i].Password = Password;
+                    if (!EsEmpresa)
+                    {
+                        ClienteFinal c = (ClienteFinal)usuarios[i];
+                        c.Cuil = CUIT_CUIL;
+                    }
+                    else
+                    {
+                        Empresa c = (Empresa)usuarios[i];
+                        c.Cuit = CUIT_CUIL;
+                    }
                 }
             }
 
@@ -232,12 +267,12 @@ namespace tp1_plataformas
 
         public bool AgregarAlCarro(int ID_Producto, int Cantidad, int ID_Usuario)
         {
-         //   Pide al usuario el carro.
-         //   Si el parámetro Cantidad es menor a la Cantidad(atributo) del producto 
-         //       “ID_Producto” (hay stock), agrega el Producto al carro del usuario.
-        	//Si no hay stock devuelve falso. 
-        	//Nota: En este punto no decremento el atributo Cantidad en la clase Producto
-         //       ya que el usuario todavía NO realizó la compra.
+            //   Pide al usuario el carro.
+            //   Si el parámetro Cantidad es menor a la Cantidad(atributo) del producto 
+            //       “ID_Producto” (hay stock), agrega el Producto al carro del usuario.
+            //Si no hay stock devuelve falso. 
+            //Nota: En este punto no decremento el atributo Cantidad en la clase Producto
+            //       ya que el usuario todavía NO realizó la compra.
 
             return true;
         }
@@ -245,7 +280,7 @@ namespace tp1_plataformas
         public bool QuitarDelCarro(int ID_Producto, int Cantidad, int ID_Usuario)
         {
 
-           //Disminuye la cantidad del producto ID_Producto en el carro del usuario.
+            //Disminuye la cantidad del producto ID_Producto en el carro del usuario.
 
 
             return true;
@@ -261,25 +296,25 @@ namespace tp1_plataformas
         {
 
             //   Busca el usuario pasado como parámetro 
-        	
+
             //Le pide su carro y a este los productos con la cantidad respectiva.
-        	
+
             //En base a esto calcula el total según el tipo de usuario, 
-         //       a la hora de hacer una compra existe una diferencia si el usuario es
-         //       ClienteFinal o Empresa ya que este último paga 21 % menos(descuenta IVA),
-         //       esto se debe ver reflejado en el total de la compra.
-        	
+            //       a la hora de hacer una compra existe una diferencia si el usuario es
+            //       ClienteFinal o Empresa ya que este último paga 21 % menos(descuenta IVA),
+            //       esto se debe ver reflejado en el total de la compra.
+
             //Crea un nuevo elemento compra con el detalle necesario
-         //       (ID auto - incremental, Comprador = ID_Usuario, Productos copiando los
-         //       elementos del carrito a un nuevo diccionario(¡cuidado con las referencias!)
-         //       y el total según calculado).
-        	
+            //       (ID auto - incremental, Comprador = ID_Usuario, Productos copiando los
+            //       elementos del carrito a un nuevo diccionario(¡cuidado con las referencias!)
+            //       y el total según calculado).
+
             //Disminuye el stock de los productos según lo comprado por el usuario. 
-        	
+
             //Luego vacía el carrito del usuario. 
-        	
+
             //Muestra el resultado por pantalla(ToString de la compra recientemente creada) 
-         //       y devuelve el valor correspondiente indicando si la ejecución fue correcta.
+            //       y devuelve el valor correspondiente indicando si la ejecución fue correcta.
 
 
             return true;
@@ -304,7 +339,7 @@ namespace tp1_plataformas
         public void MostrarTodosLosProductosPorPrecio()
         {
 
-           
+
             // Muestra todos los productos del mercado ordenados por precio.
         }
 
@@ -324,7 +359,7 @@ namespace tp1_plataformas
             //Este es para debuguear la creacion de productos e imprimir en pantalla
             for (int i = 0; i < this.productos.Count; i++)
             {
-                Console.WriteLine(this.productos[i]);
+                Console.WriteLine(this.productos[i].ToString());
             }
 
         }
