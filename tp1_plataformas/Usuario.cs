@@ -4,7 +4,7 @@ using System.Text;
 
 namespace tp1_plataformas
 {
-    abstract class Usuario
+    public abstract class Usuario
     {
 
         public int Id { get; set; }

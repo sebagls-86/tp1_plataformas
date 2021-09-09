@@ -74,6 +74,12 @@ namespace tp1_plataformas
             Console.WriteLine("-----!!!!!------");
             Console.WriteLine("-----!!PRODUCTO BUSCADO POR NOMBRE ORDENADO POR PRECIO DE MENOR A MAYOR!!!------");
             mercado.BuscarProductosPorPrecio("Lent");
+
+            Console.WriteLine(mercado.productos.Find(producto => producto.Id == 1).Cantidad);
+            mercado.AgregarAlCarro(1,1,1);
+            Console.WriteLine(mercado.productos.Find(producto => producto.Id == 1).Cantidad);
+            mercado.AgregarAlCarro(1, 1, 1);
+
         }
     }
 }

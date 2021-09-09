@@ -4,7 +4,7 @@ using System.Text;
 
 namespace tp1_plataformas
 {
-    class Producto
+    public class Producto
     {
 
         public int Id { get; set; }

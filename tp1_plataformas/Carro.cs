@@ -4,7 +4,7 @@ using System.Text;
 
 namespace tp1_plataformas
 {
-    class Carro
+    public class Carro
     {
 
         public int Id { get; set; }
@@ -17,8 +17,10 @@ namespace tp1_plataformas
             Productos.Add(producto, cantidad);
         }
 
-        public Carro()
+        public Carro(int id)
         {
+            Id = id;
+            Productos = new Dictionary<Producto, int>();
         }
 
         public bool AgregarProducto(Producto p, int cantidad)

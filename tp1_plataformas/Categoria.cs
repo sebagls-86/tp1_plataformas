@@ -4,7 +4,7 @@ using System.Text;
 
 namespace tp1_plataformas
 {
-    class Categoria
+    public class Categoria
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
