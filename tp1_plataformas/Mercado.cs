@@ -21,8 +21,11 @@ namespace tp1_plataformas
             usuarios = new List<Usuario>();
             compras = new List<Compra>();
             categorias = new Categoria[maxCategorias];
+
+           
         }
 
+        
         private int getCategoriaId() //Generamos el ID autoincremental de Categoria
         {
             int cantCategorias = 0;
@@ -98,8 +101,10 @@ namespace tp1_plataformas
                 }
 
             }
-            var ordenada = productosBuscados.OrderBy(producto => producto.Nombre);
-            foreach (Producto p in ordenada)
+
+            productos.Sort();
+           // var ordenada = productosBuscados.OrderBy(producto => producto.Nombre);
+            foreach (Producto p in productos)
             {
                 Console.WriteLine(p.Nombre + " - " + p.Precio);
             }
@@ -137,6 +142,7 @@ namespace tp1_plataformas
             {
                 if (producto.Cat.Equals(ID_Categoria))
                 {
+                    productos.Sort();
                     Console.WriteLine(producto.Nombre);
                 }
 
@@ -221,6 +227,7 @@ namespace tp1_plataformas
             Console.WriteLine("Estos son los Usuarios registrados:");
             for (int i = 0; i < usuarios.Count; i++)
             {
+                usuarios.Sort();
                 Console.WriteLine(usuarios[i].Id + "-" + usuarios[i].Nombre + "-" + usuarios[i].Mail + "-" + usuarios[i].Dni);
             }
         }
