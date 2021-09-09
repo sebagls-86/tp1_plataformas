@@ -11,13 +11,13 @@ namespace tp1_plataformas
 
         public Categoria(int _id, string _nombre)
         {
-            this.Id = _id;
-            this.Nombre = _nombre;
+            Id = _id;
+            Nombre = _nombre;
         }
 
         public override string ToString()
         {
-            return $"{this.Id}, {" - "}, {this.Nombre}";
+            return $"{Id} {"-"} {Nombre}";
         }
     }
 }

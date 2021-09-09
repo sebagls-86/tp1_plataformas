@@ -18,7 +18,7 @@ namespace tp1_plataformas
 
         public override string ToString()
         {
-            return $"{this.Dni}, {" - "}, {this.Comprador}, {" - "}, {this.Productos}, {" - "}, {this.Total}";
+            return $"{Dni} {"-"} {Comprador} {"-"} {Productos} {"-"} {Total}";
         }
     }
 }

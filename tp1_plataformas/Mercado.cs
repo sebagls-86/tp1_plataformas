@@ -14,6 +14,7 @@ namespace tp1_plataformas
 
         const int maxCategorias = 10;
 
+
         public Mercado()
         {
             productos = new List<Producto>();
@@ -26,9 +27,9 @@ namespace tp1_plataformas
         {
             int cantCategorias = 0;
 
-            for (int i = 0; i < this.categorias.Length; i++)
+            for (int i = 0; i < categorias.Length; i++)
             {
-                if (this.categorias[i] != null)
+                if (categorias[i] != null)
                 {
                     cantCategorias++;
 
@@ -147,17 +148,17 @@ namespace tp1_plataformas
         public void AgregarUsuario(int dni, String nombre, String apellido, String mail, String password, int cuil, bool esEmpresa)
         {
 
-            int id = this.usuarios.Count + 1;
+            int id = usuarios.Count + 1;
             Carro micarro = new Carro(id);
             if (esEmpresa)
             {
-                Empresa empresa = new Empresa(id, dni, nombre, apellido, mail, password, micarro, cuil);
+                Usuario empresa = new Empresa(id, dni, nombre, apellido, mail, password, micarro, cuil);
                 usuarios.Add(empresa);
                 Console.WriteLine("La empresa fue creada con exito");
             }
             else
             {
-                ClienteFinal cliente = new ClienteFinal(id, dni, nombre, apellido, mail, password, micarro, cuil);
+                Usuario cliente = new ClienteFinal(id, dni, nombre, apellido, mail, password, micarro, cuil);
                 usuarios.Add(cliente);
                 Console.WriteLine("Usuario creado con exito");
             }
@@ -166,7 +167,7 @@ namespace tp1_plataformas
         public bool ModificarUsuario(int ID, int DNI, string Nombre, string Apellido, string Mail, string Password, int CUIT_CUIL, bool EsEmpresa)
         {
 
-            for (int i = 0; i < this.usuarios.Count; i++)
+            for (int i = 0; i < usuarios.Count; i++)
             {
                 if (usuarios[i].Id == ID)
                 {
@@ -218,7 +219,7 @@ namespace tp1_plataformas
         public void MostrarUsuario()
         {
             Console.WriteLine("Estos son los Usuarios registrados:");
-            for (int i = 0; i < this.usuarios.Count; i++)
+            for (int i = 0; i < usuarios.Count; i++)
             {
                 Console.WriteLine(usuarios[i].Id + "-" + usuarios[i].Nombre + "-" + usuarios[i].Mail + "-" + usuarios[i].Dni);
             }
@@ -238,9 +239,9 @@ namespace tp1_plataformas
 
                 do
                 {
-                    if (this.categorias[j] == null)
+                    if (categorias[j] == null)
                     {
-                        this.categorias[j] = categoria;
+                        categorias[j] = categoria;
                         auxiliar = 1;
                     }
                     j++;
@@ -271,11 +272,11 @@ namespace tp1_plataformas
         public bool EliminarCategoria(int ID)
         {
 
-            for (int i = 0; i < this.categorias.Length; i++)
+            for (int i = 0; i < categorias.Length; i++)
             {
-                if (this.categorias[i].Id == ID)
+                if (categorias[i].Id == ID)
                 {
-                    this.categorias[i] = null;
+                    categorias[i] = null;
                 }
             }
 
@@ -298,9 +299,9 @@ namespace tp1_plataformas
 
         public void MostrarCategorias()
         {
-            for (int i = 0; i < this.categorias.Length; i++)
+            for (int i = 0; i < categorias.Length; i++)
             {
-                Console.WriteLine(this.categorias[i]);
+                Console.WriteLine(categorias[i]);
             }
         }
 
@@ -409,19 +410,18 @@ namespace tp1_plataformas
                 Console.WriteLine(p);
             }
 
-
         }
 
         public void MostrarTodosLosProductosPorCategoria()
         {
 
-            for (int i = 0; i < this.categorias.Length; i++)
+            for (int i = 0; i < categorias.Length; i++)
             {
-                Console.WriteLine(this.categorias[i]);
+                Console.WriteLine(categorias[i]);
 
                 foreach (Producto producto in productos)
                 {
-                    if (producto.Cat.Equals(this.categorias[i]))
+                    if (producto.Cat.Equals(categorias[i]))
                     {
                         Console.WriteLine(producto.Nombre);
                     }
@@ -430,17 +430,13 @@ namespace tp1_plataformas
 
         }
 
-        public override string ToString()
-        {
-            return $"{{}}";
-        }
-
+        
         public void imprimirProductoEnPantalla()
         {
             //Este es para debuguear la creacion de productos e imprimir en pantalla
-            for (int i = 0; i < this.productos.Count; i++)
+            for (int i = 0; i < productos.Count; i++)
             {
-                Console.WriteLine(this.productos[i].ToString());
+                Console.WriteLine(productos[i].ToString());
             }
 
         }

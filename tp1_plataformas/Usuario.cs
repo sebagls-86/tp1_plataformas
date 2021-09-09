@@ -29,9 +29,9 @@ namespace tp1_plataformas
 
         public override string ToString()
         {
-            return $"{this.Id}, {" - "},{this.Dni},{" - "},{this.Nombre},{" - "}," +
-                $"{this.Apellido},{" - "},{this.Mail},{" - "},{this.Password}," +
-                $"{" - "}, {this.MiCarro}";
+            return $"{Id} {"-"} {Dni}{"-"}{Nombre}{"-"}" +
+                $"{Apellido} {"-"} {Mail} {"-"} {Password}" +
+                $"{"-"} {MiCarro}";
         }
     }
 }

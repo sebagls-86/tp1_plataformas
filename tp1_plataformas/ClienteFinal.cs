@@ -20,7 +20,8 @@ namespace tp1_plataformas
         public override string ToString()
         {
 
-            return $"{this.Cuil}";
+            return $"{Id} {"-"} {Nombre} {"-"} {Apellido} {"-"} {Mail}" +
+                $"{"-"} {Password} {"-"} {Cuil}";
 
         }
     }
