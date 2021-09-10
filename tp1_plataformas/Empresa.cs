@@ -15,7 +15,8 @@ namespace tp1_plataformas
 
         public override string ToString()
         {
-            return $"{this.Cuit}";
+            return $"{Id} {"-"} {Nombre} {"-"} {Apellido} {"-"} {Mail}" +
+                $"{"-"} {Password} {"-"} {Cuit}";
         }
     }
 }

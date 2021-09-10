@@ -4,7 +4,7 @@ using System.Text;
 
 namespace tp1_plataformas
 {
-    public class Producto
+    public class Producto : IComparable<Producto>
     {
 
         public int Id { get; set; }
@@ -22,9 +22,15 @@ namespace tp1_plataformas
             this.Cat = Cat;
         }
 
+        public int CompareTo(Producto other)
+        {
+            return Nombre.CompareTo(other.Nombre);
+        }
+
         public override string ToString()
         {
-            return $"{this.Id}{" - "} {this.Nombre} {" - "} {this.Precio} { " - "}" + $"{this.Cantidad} {" - "} {this.Cat}";
+            return $"{Id}{"-"} {Nombre} {"-"} {Precio} { "-"}" + 
+                $"{Cantidad} {"-"} {Cat}";
         }
     }
 }

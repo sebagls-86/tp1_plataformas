@@ -4,7 +4,7 @@ using System.Text;
 
 namespace tp1_plataformas
 {
-    public abstract class Usuario
+    public abstract class Usuario : IComparable<Usuario>
     {
 
         public int Id { get; set; }
@@ -27,11 +27,16 @@ namespace tp1_plataformas
             MiCarro = carro;
         }
 
+        public int CompareTo(Usuario other)
+        {
+            return Dni.CompareTo(other.Dni);
+        }
+
         public override string ToString()
         {
-            return $"{this.Id}, {" - "},{this.Dni},{" - "},{this.Nombre},{" - "}," +
-                $"{this.Apellido},{" - "},{this.Mail},{" - "},{this.Password}," +
-                $"{" - "}, {this.MiCarro}";
+            return $"{Id} {"-"} {Dni}{"-"}{Nombre}{"-"}" +
+                $"{Apellido} {"-"} {Mail} {"-"} {Password}" +
+                $"{"-"} {MiCarro}";
         }
     }
 }

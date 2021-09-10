@@ -23,7 +23,7 @@ namespace tp1_plataformas
             //mercado.ModificarUsuario(1, 35233665, "Emma", "KuCohen", "ElMasK09@gmail.com", "CLABE", 30, true);          
             mercado.MostrarUsuario();
 
-            Console.WriteLine("-----CATEGORIAS------");
+            
             mercado.AgregarCategoria("Categoria 1");
             mercado.AgregarCategoria("Categoria 2");
             mercado.AgregarCategoria("Categoria 3");
@@ -35,11 +35,11 @@ namespace tp1_plataformas
             mercado.AgregarCategoria("Categoria 9");
             mercado.AgregarCategoria("Categoria 10");
             mercado.AgregarCategoria("Categoria 11");
-            Console.WriteLine("-----!!!!!------");
+            
             Console.WriteLine("-----Categorias------");
             mercado.MostrarCategorias();
 
-            Console.WriteLine("");
+            Console.WriteLine("---------------------");
 
             mercado.AgregarProducto("Papas Lays", 150, 1, 1);
             mercado.AgregarProducto("Lentejas", 140, 14, 2);
