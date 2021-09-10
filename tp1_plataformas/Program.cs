@@ -9,80 +9,54 @@ namespace tp1_plataformas
 
             Mercado mercado = new Mercado();
 
-            mercado.AgregarUsuario(42874751, "franco", "Motzo", "francomotzo2000@gmail.com", "pepito", 20, true);
-            mercado.AgregarUsuario(42874751, "Lopez", "Ricardo", "ricardolopez2000@gmail.com", "pepito", 20, false);
-            mercado.AgregarUsuario(42874751, "Ropez", "Picardo", "ricardolopez2000@gmail.com", "pepito", 20, false);
-            Console.WriteLine("-----!!!!!------");
-            mercado.MostrarUsuario();
-            //mercado.EliminarUsuario(3);
-            //mercado.EliminarUsuario(5);
-            Console.WriteLine("-----!!!!!------");
 
-            Console.WriteLine("-----Modifico Usuarios------");
-            mercado.ModificarUsuario(1, 35233665, "Emma", "KuCohen", "ElMasK09@gmail.com", "CLABE", 30, true);
-            //mercado.ModificarUsuario(1, 35233665, "Emma", "KuCohen", "ElMasK09@gmail.com", "CLABE", 30, true);          
-            mercado.MostrarUsuario();
+            // OPCION 1 ALTA DE CATEGORIA
+            mercado.AgregarCategoria(Console.ReadLine());
 
+            // OPCION 2 BAJA DE CATEGORIA
+            mercado.EliminarCategoria(Convert.ToInt32(Console.ReadLine()));
 
-            mercado.AgregarCategoria("Categoria 1");
-            mercado.AgregarCategoria("Categoria 2");
-            mercado.AgregarCategoria("Categoria 3");
-            mercado.AgregarCategoria("Categoria 4");
-            mercado.AgregarCategoria("Categoria 5");
-            mercado.AgregarCategoria("Categoria 6");
-            mercado.AgregarCategoria("Categoria 7");
-            mercado.AgregarCategoria("Categoria 8");
-            mercado.AgregarCategoria("Categoria 9");
-            mercado.AgregarCategoria("Categoria 10");
-            mercado.AgregarCategoria("Categoria 11");
+            // OPCION 3 MODIFICA CATEGORIA
+            mercado.ModificarCategoria(Convert.ToInt32(Console.ReadLine()), Console.ReadLine());
 
-            Console.WriteLine("-----Categorias------");
+            // OPCION 4 MOSTRAR CATEGORIAS EXISTENTES
             mercado.MostrarCategorias();
 
-            Console.WriteLine("---------------------");
+            // OPCION  5 ALTA DE USUARIO
+            mercado.AgregarUsuario(Convert.ToInt32(Console.ReadLine()), Console.ReadLine(), Console.ReadLine(), Console.ReadLine(), Console.ReadLine(), Convert.ToInt32(Console.ReadLine()), true);
 
-            mercado.AgregarProducto("Papas Lays", 150, 1, 1);
-            mercado.AgregarProducto("Lentejas", 140, 14, 2);
-            mercado.AgregarProducto("Garbanzos", 180, 3, 2);
-            mercado.AgregarProducto("Lentejas2", 130, 16, 2);
+            // OPCION 7  MODIFICAR USUARIO En duda D:
+            mercado.ModificarUsuario(Convert.ToInt32(Console.ReadLine()), Convert.ToInt32(Console.ReadLine()), Console.ReadLine(), Console.ReadLine(), Console.ReadLine(), Console.ReadLine(), Convert.ToInt32(Console.ReadLine()), true);
 
+            // OPCION 8 MOSTRAR USUARIOS EXISTENTES DEL SISTEMA
+            mercado.MostrarUsuario();
+        
+            // OPCION 9 ALTA DE PRODUCTO
+            mercado.AgregarProducto(Console.ReadLine(), Convert.ToDouble(Console.ReadLine()), Convert.ToInt32(Console.ReadLine()), Convert.ToInt32(Console.ReadLine()));
 
+            // OPCION 10 BAJA DE PRODUCTO
+            mercado.EliminarProducto(Convert.ToInt32(Console.ReadLine()));
+
+            // OPCION 11 MODIFICAR PRODUCTO
+            mercado.ModificarCategoria(Convert.ToInt32(Console.ReadLine()), Console.ReadLine());
+
+            // OPCION 12 MOSTRAR PRODUCTOS QUE EXISTAN EN EL SISTEMA
             mercado.imprimirProductoEnPantalla();
-            //Console.WriteLine("");
 
-            //mercado.BuscarCategoria("Categoria 10");
-            //Console.WriteLine("");
-
-            mercado.ModificarCategoria(1, "Pepito");
-            mercado.imprimirProductoEnPantalla();
-            //mercado.imprimirEnPantallaCategorias();
-            //mercado.imprimirEnPantalla(); //producto
-
-            mercado.EliminarCategoria(1);
-            mercado.imprimirProductoEnPantalla();
-
-            Console.WriteLine("-----!!!!!------");
-            Console.WriteLine("-----PRODUCTOS POR PRECIO------");
+            // OPCION 13 MOSTRAR PRODUCTOS EXISTENTES EN EL SISTEMA ORDENADOS POR PRECIO.
             mercado.MostrarTodosLosProductosPorPrecio();
 
-            Console.WriteLine("-----!!!!!------");
-            Console.WriteLine("-----PRODUCTOS POR CATEGORIA------");
+            // OPCION 14 MOSTRAR PRODUCTOS QUE EXISTEN EN EL SISTEMA ORDENADOS POR CATEGORIA
             mercado.MostrarTodosLosProductosPorCategoria();
-            Console.WriteLine("-----!!PRODUCTO BUSCADO POR NOMBRE LIKE!!!------");
-            mercado.BuscarProductos("L");
 
-            Console.WriteLine("-----!!!!!------");
-            Console.WriteLine("-----!!PRODUCTO BUSCADO POR NOMBRE ORDENADO POR PRECIO DE MENOR A MAYOR!!!------");
-            mercado.BuscarProductosPorPrecio("Lent");
+            // OPCION 15 MOSTRAR PRODUCTOS QUE EXISTEN EN EL SISTEMA POR PRECIO
+            mercado.MostrarTodosLosProductosPorPrecio();
 
+            // OPCION 16 MOSTRAR PRODUCTOS QUE EXISTEN EN EL SISTEMA POR BUSQUEDA
+            mercado.BuscarProductos(Console.ReadLine());
 
-            Console.WriteLine("Cantidad de {0} : {1}", mercado.productos.Find(producto => producto.Id == 1).Nombre, mercado.productos.Find(producto => producto.Id == 1).Cantidad);
-            mercado.AgregarAlCarro(1, 1, 1);
-            Console.WriteLine("Cantidad de {0} : {1}", mercado.productos.Find(producto => producto.Id == 1).Nombre, mercado.productos.Find(producto => producto.Id == 1).Cantidad);
-            mercado.VaciarCarro(1);
-            //Console.WriteLine("Cantidad de {0} : {1}", mercado.productos.Find(producto => producto.Id == 1).Nombre, mercado.productos.Find(producto => producto.Id == 1).Cantidad);
-            mercado.productos.ForEach(p => Console.WriteLine(p.Nombre + " " + p.Cantidad));
-
+            // OPCION 17 MOSTRAR PRODUCTOS QUE EXISTEN EN EL SISTEMA POR NOMBRE ORDENADO POR PRECIO DE MENOR A MAYOR!!
+            mercado.BuscarProductosPorPrecio(Console.ReadLine());
         }
     }
 }

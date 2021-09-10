@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -75,7 +75,7 @@ namespace tp1_plataformas
                 {
 
                     productos.RemoveAll(producto => producto.Id == id);
-                    Console.WriteLine("Producto " + id + " eliminado con �xito!");
+                    Console.WriteLine("Producto " + id + " eliminado con Ã©xito!");
                     break;
 
                 }
@@ -151,7 +151,7 @@ namespace tp1_plataformas
         }
 
 
-        public void AgregarUsuario(int dni, String nombre, String apellido, String mail, String password, int cuil, bool esEmpresa)
+        public bool AgregarUsuario(int dni, String nombre, String apellido, String mail, String password, int cuil, bool esEmpresa)
         {
 
             int id = usuarios.Count + 1;
@@ -168,6 +168,8 @@ namespace tp1_plataformas
                 usuarios.Add(cliente);
                 Console.WriteLine("Usuario creado con exito");
             }
+
+            return true;
 
         }
         public bool ModificarUsuario(int ID, int DNI, string Nombre, string Apellido, string Mail, string Password, int CUIT_CUIL, bool EsEmpresa)
@@ -208,7 +210,7 @@ namespace tp1_plataformas
                 if (usuario.Id.Equals(id))
                 {
                     usuarios.RemoveAll(usuario => usuario.Id == id);
-                    Console.WriteLine("Usuario " + id + " eliminado con �xito!");
+                    Console.WriteLine("Usuario " + id + " eliminado con Ã©xito!");
                     break;
 
                 }
@@ -342,13 +344,13 @@ namespace tp1_plataformas
                     usuarioEncontrado.MiCarro.AgregarProducto(productoEncontrado, Cantidad);
                     productoEncontrado.Cantidad -= Cantidad;
                     sePudoAgregar = true;
-                    Console.WriteLine("El producto {0} con cantidad {1} se ha a�adido al carro del usuario {2}.", productoEncontrado.Nombre, Cantidad, usuarioEncontrado.Nombre);
+
+                    Console.WriteLine("El producto {0} con cantidad {1} se ha añadido al carro del usuario {2}.", productoEncontrado.Nombre, Cantidad, usuarioEncontrado.Nombre);
+
                 }
             }
             return sePudoAgregar;
         }
-
-
 
         public bool QuitarDelCarro(int Id_Producto, int Cantidad, int Id_Usuario)
         {
@@ -396,6 +398,7 @@ namespace tp1_plataformas
 
         public bool VaciarCarro(int Id_Usuario)
         {
+
             bool sePudoVaciar = false;
             Usuario usuarioEncontrado;
             if (MercadoHelper.SonMenoresACero(new List<int> { Id_Usuario }))
@@ -419,32 +422,33 @@ namespace tp1_plataformas
                 sePudoVaciar = true;
             }
             return sePudoVaciar;
+
         }
 
 
         public bool Comprar(int ID_Usuario)
         {
 
-            //   Busca el usuario pasado como par�metro 
+            //   Busca el usuario pasado como parÃ¡metro 
 
             //Le pide su carro y a este los productos con la cantidad respectiva.
 
-            //En base a esto calcula el total seg�n el tipo de usuario, 
+            //En base a esto calcula el total segÃºn el tipo de usuario, 
             //       a la hora de hacer una compra existe una diferencia si el usuario es
-            //       ClienteFinal o Empresa ya que este �ltimo paga 21 % menos(descuenta IVA),
+            //       ClienteFinal o Empresa ya que este Ãºltimo paga 21 % menos(descuenta IVA),
             //       esto se debe ver reflejado en el total de la compra.
 
             //Crea un nuevo elemento compra con el detalle necesario
             //       (ID auto - incremental, Comprador = ID_Usuario, Productos copiando los
-            //       elementos del carrito a un nuevo diccionario(�cuidado con las referencias!)
-            //       y el total seg�n calculado).
+            //       elementos del carrito a un nuevo diccionario(Â¡cuidado con las referencias!)
+            //       y el total segÃºn calculado).
 
-            //Disminuye el stock de los productos seg�n lo comprado por el usuario. 
+            //Disminuye el stock de los productos segÃºn lo comprado por el usuario. 
 
-            //Luego vac�a el carrito del usuario. 
+            //Luego vacÃ­a el carrito del usuario. 
 
             //Muestra el resultado por pantalla(ToString de la compra recientemente creada) 
-            //       y devuelve el valor correspondiente indicando si la ejecuci�n fue correcta.
+            //       y devuelve el valor correspondiente indicando si la ejecuciÃ³n fue correcta.
 
 
             return true;
@@ -453,7 +457,7 @@ namespace tp1_plataformas
         public bool ModificarCompra(int ID, double Total)
         {
 
-            //Solo se permite modificar el total en caso que haya un error de facturaci�n.
+            //Solo se permite modificar el total en caso que haya un error de facturaciÃ³n.
             //El resto de los datos no pueden ser modificados.
 
             return true;
@@ -461,7 +465,8 @@ namespace tp1_plataformas
 
         public bool EliminarCompra(int ID)
         {
-            // Nuestro �bot�n de arrepentimiento��
+            // Nuestro ÂbotÃ³n de arrepentimientoÂ
+
 
             return true;
         }
