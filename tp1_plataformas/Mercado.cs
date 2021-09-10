@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -22,10 +22,10 @@ namespace tp1_plataformas
             compras = new List<Compra>();
             categorias = new Categoria[maxCategorias];
 
-           
+
         }
 
-        
+
         private int getCategoriaId() //Generamos el ID autoincremental de Categoria
         {
             int cantCategorias = 0;
@@ -75,7 +75,7 @@ namespace tp1_plataformas
                 {
 
                     productos.RemoveAll(producto => producto.Id == id);
-                    Console.WriteLine("Producto " + id + " eliminado con éxito!");
+                    Console.WriteLine("Producto " + id + " eliminado con Ã©xito!");
                     break;
 
                 }
@@ -103,7 +103,7 @@ namespace tp1_plataformas
             }
 
             productos.Sort();
-           // var ordenada = productosBuscados.OrderBy(producto => producto.Nombre);
+            // var ordenada = productosBuscados.OrderBy(producto => producto.Nombre);
             foreach (Producto p in productos)
             {
                 Console.WriteLine(p.Nombre + " - " + p.Precio);
@@ -151,7 +151,7 @@ namespace tp1_plataformas
         }
 
 
-        public void AgregarUsuario(int dni, String nombre, String apellido, String mail, String password, int cuil, bool esEmpresa)
+        public bool AgregarUsuario(int dni, String nombre, String apellido, String mail, String password, int cuil, bool esEmpresa)
         {
 
             int id = usuarios.Count + 1;
@@ -168,6 +168,8 @@ namespace tp1_plataformas
                 usuarios.Add(cliente);
                 Console.WriteLine("Usuario creado con exito");
             }
+
+            return true;
 
         }
         public bool ModificarUsuario(int ID, int DNI, string Nombre, string Apellido, string Mail, string Password, int CUIT_CUIL, bool EsEmpresa)
@@ -208,7 +210,7 @@ namespace tp1_plataformas
                 if (usuario.Id.Equals(id))
                 {
                     usuarios.RemoveAll(usuario => usuario.Id == id);
-                    Console.WriteLine("Usuario " + id + " eliminado con éxito!");
+                    Console.WriteLine("Usuario " + id + " eliminado con Ã©xito!");
                     break;
 
                 }
@@ -325,7 +327,7 @@ namespace tp1_plataformas
             {
                 Console.WriteLine("El usuario con id {0} no se pudo encontrar", Id_Usuario);
             }
-            else if (!MercadoHelper.ExisteElProducto(Id_Producto,productos))
+            else if (!MercadoHelper.ExisteElProducto(Id_Producto, productos))
             {
                 Console.WriteLine("El producto con id {0} no se pudo encontrar", Id_Producto);
             }
@@ -342,13 +344,13 @@ namespace tp1_plataformas
                     productoEncontrado.Cantidad--;
                     usuarioEncontrado.MiCarro.AgregarProducto(productoEncontrado, Cantidad);
                     sePudoAgregar = true;
-                    Console.WriteLine("El producto {0} se ha añadido al carro del usuario {1}.", productoEncontrado.Nombre, usuarioEncontrado.Nombre);
+                    Console.WriteLine("El producto {0} se ha aÃ±adido al carro del usuario {1}.", productoEncontrado.Nombre, usuarioEncontrado.Nombre);
                 }
             }
             return sePudoAgregar;
         }
 
-        
+
 
         public bool QuitarDelCarro(int ID_Producto, int Cantidad, int ID_Usuario)
         {
@@ -361,33 +363,33 @@ namespace tp1_plataformas
 
         public bool VaciarCarro(int ID_Usuario)
         {
-            //vacía el carro del usuario.
+            //vacÃ­a el carro del usuario.
             return true;
         }
 
         public bool Comprar(int ID_Usuario)
         {
 
-            //   Busca el usuario pasado como parámetro 
+            //   Busca el usuario pasado como parÃ¡metro 
 
             //Le pide su carro y a este los productos con la cantidad respectiva.
 
-            //En base a esto calcula el total según el tipo de usuario, 
+            //En base a esto calcula el total segÃºn el tipo de usuario, 
             //       a la hora de hacer una compra existe una diferencia si el usuario es
-            //       ClienteFinal o Empresa ya que este último paga 21 % menos(descuenta IVA),
+            //       ClienteFinal o Empresa ya que este Ãºltimo paga 21 % menos(descuenta IVA),
             //       esto se debe ver reflejado en el total de la compra.
 
             //Crea un nuevo elemento compra con el detalle necesario
             //       (ID auto - incremental, Comprador = ID_Usuario, Productos copiando los
-            //       elementos del carrito a un nuevo diccionario(¡cuidado con las referencias!)
-            //       y el total según calculado).
+            //       elementos del carrito a un nuevo diccionario(Â¡cuidado con las referencias!)
+            //       y el total segÃºn calculado).
 
-            //Disminuye el stock de los productos según lo comprado por el usuario. 
+            //Disminuye el stock de los productos segÃºn lo comprado por el usuario. 
 
-            //Luego vacía el carrito del usuario. 
+            //Luego vacÃ­a el carrito del usuario. 
 
             //Muestra el resultado por pantalla(ToString de la compra recientemente creada) 
-            //       y devuelve el valor correspondiente indicando si la ejecución fue correcta.
+            //       y devuelve el valor correspondiente indicando si la ejecuciÃ³n fue correcta.
 
 
             return true;
@@ -396,7 +398,7 @@ namespace tp1_plataformas
         public bool ModificarCompra(int ID, double Total)
         {
 
-            //Solo se permite modificar el total en caso que haya un error de facturación.
+            //Solo se permite modificar el total en caso que haya un error de facturaciÃ³n.
             //El resto de los datos no pueden ser modificados.
 
             return true;
@@ -404,7 +406,8 @@ namespace tp1_plataformas
 
         public bool EliminarCompra(int ID)
         {
-            // Nuestro “botón de arrepentimiento”…
+            // Nuestro Â“botÃ³n de arrepentimientoÂ”
+
 
             return true;
         }
@@ -437,7 +440,7 @@ namespace tp1_plataformas
 
         }
 
-        
+
         public void imprimirProductoEnPantalla()
         {
             //Este es para debuguear la creacion de productos e imprimir en pantalla
