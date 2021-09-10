@@ -6,7 +6,7 @@ namespace tp1_plataformas
     {
         static void Main(string[] args)
         {
-           
+
             Mercado mercado = new Mercado();
 
             mercado.AgregarUsuario(42874751, "franco", "Motzo", "francomotzo2000@gmail.com", "pepito", 20, true);
@@ -17,13 +17,13 @@ namespace tp1_plataformas
             //mercado.EliminarUsuario(3);
             //mercado.EliminarUsuario(5);
             Console.WriteLine("-----!!!!!------");
- 
+
             Console.WriteLine("-----Modifico Usuarios------");
             mercado.ModificarUsuario(1, 35233665, "Emma", "KuCohen", "ElMasK09@gmail.com", "CLABE", 30, true);
             //mercado.ModificarUsuario(1, 35233665, "Emma", "KuCohen", "ElMasK09@gmail.com", "CLABE", 30, true);          
             mercado.MostrarUsuario();
 
-            
+
             mercado.AgregarCategoria("Categoria 1");
             mercado.AgregarCategoria("Categoria 2");
             mercado.AgregarCategoria("Categoria 3");
@@ -35,7 +35,7 @@ namespace tp1_plataformas
             mercado.AgregarCategoria("Categoria 9");
             mercado.AgregarCategoria("Categoria 10");
             mercado.AgregarCategoria("Categoria 11");
-            
+
             Console.WriteLine("-----Categorias------");
             mercado.MostrarCategorias();
 
@@ -45,7 +45,7 @@ namespace tp1_plataformas
             mercado.AgregarProducto("Lentejas", 140, 14, 2);
             mercado.AgregarProducto("Garbanzos", 180, 3, 2);
             mercado.AgregarProducto("Lentejas2", 130, 16, 2);
-            
+
 
             mercado.imprimirProductoEnPantalla();
             //Console.WriteLine("");
@@ -53,7 +53,7 @@ namespace tp1_plataformas
             //mercado.BuscarCategoria("Categoria 10");
             //Console.WriteLine("");
 
-            mercado.ModificarCategoria(1 , "Pepito");
+            mercado.ModificarCategoria(1, "Pepito");
             mercado.imprimirProductoEnPantalla();
             //mercado.imprimirEnPantallaCategorias();
             //mercado.imprimirEnPantalla(); //producto
@@ -75,10 +75,13 @@ namespace tp1_plataformas
             Console.WriteLine("-----!!PRODUCTO BUSCADO POR NOMBRE ORDENADO POR PRECIO DE MENOR A MAYOR!!!------");
             mercado.BuscarProductosPorPrecio("Lent");
 
-            Console.WriteLine(mercado.productos.Find(producto => producto.Id == 1).Cantidad);
-            mercado.AgregarAlCarro(1,1,1);
-            Console.WriteLine(mercado.productos.Find(producto => producto.Id == 1).Cantidad);
+
+            Console.WriteLine("Cantidad de {0} : {1}", mercado.productos.Find(producto => producto.Id == 1).Nombre, mercado.productos.Find(producto => producto.Id == 1).Cantidad);
             mercado.AgregarAlCarro(1, 1, 1);
+            Console.WriteLine("Cantidad de {0} : {1}", mercado.productos.Find(producto => producto.Id == 1).Nombre, mercado.productos.Find(producto => producto.Id == 1).Cantidad);
+            mercado.VaciarCarro(1);
+            //Console.WriteLine("Cantidad de {0} : {1}", mercado.productos.Find(producto => producto.Id == 1).Nombre, mercado.productos.Find(producto => producto.Id == 1).Cantidad);
+            mercado.productos.ForEach(p => Console.WriteLine(p.Nombre + " " + p.Cantidad));
 
         }
     }

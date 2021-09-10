@@ -22,10 +22,10 @@ namespace tp1_plataformas
             compras = new List<Compra>();
             categorias = new Categoria[maxCategorias];
 
-           
+
         }
 
-        
+
         private int getCategoriaId() //Generamos el ID autoincremental de Categoria
         {
             int cantCategorias = 0;
@@ -103,7 +103,7 @@ namespace tp1_plataformas
             }
 
             productos.Sort();
-           // var ordenada = productosBuscados.OrderBy(producto => producto.Nombre);
+            // var ordenada = productosBuscados.OrderBy(producto => producto.Nombre);
             foreach (Producto p in productos)
             {
                 Console.WriteLine(p.Nombre + " - " + p.Precio);
@@ -325,7 +325,7 @@ namespace tp1_plataformas
             {
                 Console.WriteLine("El usuario con id {0} no se pudo encontrar", Id_Usuario);
             }
-            else if (!MercadoHelper.ExisteElProducto(Id_Producto,productos))
+            else if (!MercadoHelper.ExisteElProducto(Id_Producto, productos))
             {
                 Console.WriteLine("El producto con id {0} no se pudo encontrar", Id_Producto);
             }
@@ -339,31 +339,88 @@ namespace tp1_plataformas
                 }
                 else
                 {
-                    productoEncontrado.Cantidad--;
                     usuarioEncontrado.MiCarro.AgregarProducto(productoEncontrado, Cantidad);
+                    productoEncontrado.Cantidad -= Cantidad;
                     sePudoAgregar = true;
-                    Console.WriteLine("El producto {0} se ha añadido al carro del usuario {1}.", productoEncontrado.Nombre, usuarioEncontrado.Nombre);
+                    Console.WriteLine("El producto {0} con cantidad {1} se ha añadido al carro del usuario {2}.", productoEncontrado.Nombre, Cantidad, usuarioEncontrado.Nombre);
                 }
             }
             return sePudoAgregar;
         }
 
-        
 
-        public bool QuitarDelCarro(int ID_Producto, int Cantidad, int ID_Usuario)
+
+        public bool QuitarDelCarro(int Id_Producto, int Cantidad, int Id_Usuario)
         {
+            bool sePudoDisminuir = false;
+            Usuario usuarioEncontrado;
+            Producto productoEncontrado;
+            if (MercadoHelper.SonMenoresACero(new List<int> { Id_Producto, Cantidad, Id_Usuario }))
+            {
+                Console.WriteLine("Los parametros numericos deben ser mayor o igual a 0");
+            }
+            else if (!MercadoHelper.ExisteElUsuario(Id_Usuario, usuarios))
+            {
+                Console.WriteLine("El usuario con id {0} no se pudo encontrar", Id_Usuario);
+            }
+            else if (!MercadoHelper.ExisteElProducto(Id_Producto, productos))
+            {
+                Console.WriteLine("El producto con id {0} no se pudo encontrar", Id_Producto);
+            }
+            else
+            {
+                usuarioEncontrado = usuarios.Find(usuario => usuario.Id == Id_Usuario);
+                productoEncontrado = productos.Find(producto => producto.Id == Id_Producto);
+                if (!usuarioEncontrado.MiCarro.Productos.ContainsKey(productoEncontrado))
+                {
+                    Console.WriteLine("El producto {0} no se encuentra en el carro de {1}.", productoEncontrado, usuarioEncontrado.Nombre);
+                }
+                else if (usuarioEncontrado.MiCarro.Productos[productoEncontrado] < Cantidad || Cantidad == 0)
+                {
+                    productoEncontrado.Cantidad += usuarioEncontrado.MiCarro.Productos[productoEncontrado];
+                    usuarioEncontrado.MiCarro.RemoverProducto(productoEncontrado, Cantidad);
+                    Console.WriteLine("El producto {0} ha sido removido en su totalidad del carro del usuario {1}.", productoEncontrado.Nombre, usuarioEncontrado.Nombre);
+                }
+                else
+                {
 
-            //Disminuye la cantidad del producto ID_Producto en el carro del usuario.
+                    usuarioEncontrado.MiCarro.RemoverProducto(productoEncontrado, Cantidad);
+                    productoEncontrado.Cantidad += Cantidad;
+                    sePudoDisminuir = true;
+                    Console.WriteLine("El producto {0} con cantidad {1} se ha removido del carro del usuario {2}.", productoEncontrado.Nombre, Cantidad, usuarioEncontrado.Nombre);
 
-
-            return true;
+                }
+            }
+            return sePudoDisminuir;
         }
 
-        public bool VaciarCarro(int ID_Usuario)
+        public bool VaciarCarro(int Id_Usuario)
         {
-            //vacía el carro del usuario.
-            return true;
+            bool sePudoVaciar = false;
+            Usuario usuarioEncontrado;
+            if (MercadoHelper.SonMenoresACero(new List<int> { Id_Usuario }))
+            {
+                Console.WriteLine("Los parametros numericos deben ser mayor o igual a 0");
+            }
+            else if (!MercadoHelper.ExisteElUsuario(Id_Usuario, usuarios))
+            {
+                Console.WriteLine("El usuario con id {0} no se pudo encontrar", Id_Usuario);
+            }
+            else
+            {
+                usuarioEncontrado = usuarios.Find(usuario => usuario.Id == Id_Usuario);
+
+                foreach (Producto producto in usuarioEncontrado.MiCarro.Productos.Keys)
+                {
+                    productos.Find(product => product.Id == producto.Id).Cantidad += usuarioEncontrado.MiCarro.Productos[producto];
+                }
+                usuarios.Find(usuario => usuario.Id == Id_Usuario).MiCarro.Vaciar();
+                Console.WriteLine("Se ha vaciado el carro correctamente.");
+                sePudoVaciar = true;
+            }
+            return sePudoVaciar;
         }
+
 
         public bool Comprar(int ID_Usuario)
         {
@@ -437,7 +494,7 @@ namespace tp1_plataformas
 
         }
 
-        
+
         public void imprimirProductoEnPantalla()
         {
             //Este es para debuguear la creacion de productos e imprimir en pantalla
