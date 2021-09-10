@@ -67,12 +67,11 @@ namespace tp1_plataformas
             {
                 if (cantidad > Productos[p] || cantidad == 0)
                 {
-                    Console.Write("Eliminando el producto.");
                     Productos.Remove(p);
                     seQuitoElProducto = true;
                 }
                 else {
-                    Productos[p] -= 1;
+                    Productos[p] = Productos[p] - cantidad;
                     seQuitoElProducto = true;
                 }
                 

@@ -1,4 +1,4 @@
-﻿using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -75,7 +75,7 @@ namespace tp1_plataformas
                 {
 
                     productos.RemoveAll(producto => producto.Id == id);
-                    Console.WriteLine("Producto " + id + " eliminado con éxito!");
+                    Console.WriteLine("Producto " + id + " eliminado con Ã©xito!");
                     break;
 
                 }
@@ -210,7 +210,7 @@ namespace tp1_plataformas
                 if (usuario.Id.Equals(id))
                 {
                     usuarios.RemoveAll(usuario => usuario.Id == id);
-                    Console.WriteLine("Usuario " + id + " eliminado con éxito!");
+                    Console.WriteLine("Usuario " + id + " eliminado con Ã©xito!");
                     break;
 
                 }
@@ -341,55 +341,114 @@ namespace tp1_plataformas
                 }
                 else
                 {
-                    productoEncontrado.Cantidad--;
                     usuarioEncontrado.MiCarro.AgregarProducto(productoEncontrado, Cantidad);
+                    productoEncontrado.Cantidad -= Cantidad;
                     sePudoAgregar = true;
-                    Console.WriteLine("El producto {0} se ha añadido al carro del usuario {1}.", productoEncontrado.Nombre, usuarioEncontrado.Nombre);
+
+                    Console.WriteLine("El producto {0} con cantidad {1} se ha añadido al carro del usuario {2}.", productoEncontrado.Nombre, Cantidad, usuarioEncontrado.Nombre);
+
                 }
             }
             return sePudoAgregar;
         }
 
-
-
-        public bool QuitarDelCarro(int ID_Producto, int Cantidad, int ID_Usuario)
+        public bool QuitarDelCarro(int Id_Producto, int Cantidad, int Id_Usuario)
         {
+            bool sePudoDisminuir = false;
+            Usuario usuarioEncontrado;
+            Producto productoEncontrado;
+            if (MercadoHelper.SonMenoresACero(new List<int> { Id_Producto, Cantidad, Id_Usuario }))
+            {
+                Console.WriteLine("Los parametros numericos deben ser mayor o igual a 0");
+            }
+            else if (!MercadoHelper.ExisteElUsuario(Id_Usuario, usuarios))
+            {
+                Console.WriteLine("El usuario con id {0} no se pudo encontrar", Id_Usuario);
+            }
+            else if (!MercadoHelper.ExisteElProducto(Id_Producto, productos))
+            {
+                Console.WriteLine("El producto con id {0} no se pudo encontrar", Id_Producto);
+            }
+            else
+            {
+                usuarioEncontrado = usuarios.Find(usuario => usuario.Id == Id_Usuario);
+                productoEncontrado = productos.Find(producto => producto.Id == Id_Producto);
+                if (!usuarioEncontrado.MiCarro.Productos.ContainsKey(productoEncontrado))
+                {
+                    Console.WriteLine("El producto {0} no se encuentra en el carro de {1}.", productoEncontrado, usuarioEncontrado.Nombre);
+                }
+                else if (usuarioEncontrado.MiCarro.Productos[productoEncontrado] < Cantidad || Cantidad == 0)
+                {
+                    productoEncontrado.Cantidad += usuarioEncontrado.MiCarro.Productos[productoEncontrado];
+                    usuarioEncontrado.MiCarro.RemoverProducto(productoEncontrado, Cantidad);
+                    Console.WriteLine("El producto {0} ha sido removido en su totalidad del carro del usuario {1}.", productoEncontrado.Nombre, usuarioEncontrado.Nombre);
+                }
+                else
+                {
 
-            //Disminuye la cantidad del producto ID_Producto en el carro del usuario.
+                    usuarioEncontrado.MiCarro.RemoverProducto(productoEncontrado, Cantidad);
+                    productoEncontrado.Cantidad += Cantidad;
+                    sePudoDisminuir = true;
+                    Console.WriteLine("El producto {0} con cantidad {1} se ha removido del carro del usuario {2}.", productoEncontrado.Nombre, Cantidad, usuarioEncontrado.Nombre);
 
-
-            return true;
+                }
+            }
+            return sePudoDisminuir;
         }
 
-        public bool VaciarCarro(int ID_Usuario)
+        public bool VaciarCarro(int Id_Usuario)
         {
-            //vacía el carro del usuario.
-            return true;
+
+            bool sePudoVaciar = false;
+            Usuario usuarioEncontrado;
+            if (MercadoHelper.SonMenoresACero(new List<int> { Id_Usuario }))
+            {
+                Console.WriteLine("Los parametros numericos deben ser mayor o igual a 0");
+            }
+            else if (!MercadoHelper.ExisteElUsuario(Id_Usuario, usuarios))
+            {
+                Console.WriteLine("El usuario con id {0} no se pudo encontrar", Id_Usuario);
+            }
+            else
+            {
+                usuarioEncontrado = usuarios.Find(usuario => usuario.Id == Id_Usuario);
+
+                foreach (Producto producto in usuarioEncontrado.MiCarro.Productos.Keys)
+                {
+                    productos.Find(product => product.Id == producto.Id).Cantidad += usuarioEncontrado.MiCarro.Productos[producto];
+                }
+                usuarios.Find(usuario => usuario.Id == Id_Usuario).MiCarro.Vaciar();
+                Console.WriteLine("Se ha vaciado el carro correctamente.");
+                sePudoVaciar = true;
+            }
+            return sePudoVaciar;
+
         }
+
 
         public bool Comprar(int ID_Usuario)
         {
 
-            //   Busca el usuario pasado como parámetro 
+            //   Busca el usuario pasado como parÃ¡metro 
 
             //Le pide su carro y a este los productos con la cantidad respectiva.
 
-            //En base a esto calcula el total según el tipo de usuario, 
+            //En base a esto calcula el total segÃºn el tipo de usuario, 
             //       a la hora de hacer una compra existe una diferencia si el usuario es
-            //       ClienteFinal o Empresa ya que este último paga 21 % menos(descuenta IVA),
+            //       ClienteFinal o Empresa ya que este Ãºltimo paga 21 % menos(descuenta IVA),
             //       esto se debe ver reflejado en el total de la compra.
 
             //Crea un nuevo elemento compra con el detalle necesario
             //       (ID auto - incremental, Comprador = ID_Usuario, Productos copiando los
-            //       elementos del carrito a un nuevo diccionario(¡cuidado con las referencias!)
-            //       y el total según calculado).
+            //       elementos del carrito a un nuevo diccionario(Â¡cuidado con las referencias!)
+            //       y el total segÃºn calculado).
 
-            //Disminuye el stock de los productos según lo comprado por el usuario. 
+            //Disminuye el stock de los productos segÃºn lo comprado por el usuario. 
 
-            //Luego vacía el carrito del usuario. 
+            //Luego vacÃ­a el carrito del usuario. 
 
             //Muestra el resultado por pantalla(ToString de la compra recientemente creada) 
-            //       y devuelve el valor correspondiente indicando si la ejecución fue correcta.
+            //       y devuelve el valor correspondiente indicando si la ejecuciÃ³n fue correcta.
 
 
             return true;
@@ -398,7 +457,7 @@ namespace tp1_plataformas
         public bool ModificarCompra(int ID, double Total)
         {
 
-            //Solo se permite modificar el total en caso que haya un error de facturación.
+            //Solo se permite modificar el total en caso que haya un error de facturaciÃ³n.
             //El resto de los datos no pueden ser modificados.
 
             return true;
@@ -406,7 +465,7 @@ namespace tp1_plataformas
 
         public bool EliminarCompra(int ID)
         {
-            // Nuestro botón de arrepentimiento
+            // Nuestro ÂbotÃ³n de arrepentimientoÂ
 
 
             return true;

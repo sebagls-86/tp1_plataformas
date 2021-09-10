@@ -9,6 +9,7 @@ namespace tp1_plataformas
 
             Mercado mercado = new Mercado();
 
+
             // OPCION 1 ALTA DE CATEGORIA
             mercado.AgregarCategoria(Console.ReadLine());
 
@@ -25,7 +26,7 @@ namespace tp1_plataformas
             mercado.AgregarUsuario(Convert.ToInt32(Console.ReadLine()), Console.ReadLine(), Console.ReadLine(), Console.ReadLine(), Console.ReadLine(), Convert.ToInt32(Console.ReadLine()), true);
 
             // OPCION 7  MODIFICAR USUARIO En duda D:
-            mercado.ModificarUsuario(1, 35233665, "Emma", "KuCohen", "ElMasK09@gmail.com", "CLABE", 30, true);
+            mercado.ModificarUsuario(Convert.ToInt32(Console.ReadLine()), Convert.ToInt32(Console.ReadLine()), Console.ReadLine(), Console.ReadLine(), Console.ReadLine(), Console.ReadLine(), Convert.ToInt32(Console.ReadLine()), true);
 
             // OPCION 8 MOSTRAR USUARIOS EXISTENTES DEL SISTEMA
             mercado.MostrarUsuario();
@@ -56,7 +57,6 @@ namespace tp1_plataformas
 
             // OPCION 17 MOSTRAR PRODUCTOS QUE EXISTEN EN EL SISTEMA POR NOMBRE ORDENADO POR PRECIO DE MENOR A MAYOR!!
             mercado.BuscarProductosPorPrecio(Console.ReadLine());
-
         }
     }
 }
