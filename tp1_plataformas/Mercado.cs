@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -64,6 +64,20 @@ namespace tp1_plataformas
 
         public bool ModificarProducto(int ID, string Nombre, double Precio, int Cantidad, int ID_Categoria)
         {
+            for (int i = 0; i < productos.Count; i++)
+            {
+                if (productos[i].Id == ID)
+                {
+                    productos[i].Nombre = Nombre;
+                    productos[i].Precio = Precio;
+                    productos[i].Cantidad = Cantidad;
+                    productos[i].Id = ID;
+                    productos[i].Cat = productos[ID_Categoria - 1].Cat; // :)
+                   
+                   Console.WriteLine("Producto modificado con éxito " + Nombre + Precio + Cantidad + ID);
+                }
+            }
+
             return true;
         }
 
@@ -75,7 +89,7 @@ namespace tp1_plataformas
                 {
 
                     productos.RemoveAll(producto => producto.Id == id);
-                    Console.WriteLine("Producto " + id + " eliminado con Ã©xito!");
+                    Console.WriteLine("Producto " + id + " eliminado con éxito!");
                     break;
 
                 }
@@ -188,11 +202,16 @@ namespace tp1_plataformas
                     {
                         ClienteFinal c = (ClienteFinal)usuarios[i];
                         c.Cuil = CUIT_CUIL;
+
+                        Console.WriteLine("Usuario modificado con éxito\n" +
+                                            " " + Nombre + " " + Apellido + " " + Mail + " " + Password + " " + DNI + " " + CUIT_CUIL);
                     }
                     else
                     {
                         Empresa c = (Empresa)usuarios[i];
                         c.Cuit = CUIT_CUIL;
+                        Console.WriteLine("Usuario modificado con éxito\n" +
+                                            " " + Nombre + " " + Apellido + " " + Mail + " " + Password + " " + DNI + " " + CUIT_CUIL);
                     }
                 }
             }
@@ -222,6 +241,72 @@ namespace tp1_plataformas
             }
             return true;
 
+        }
+
+        public bool ExisteUsuarioPorId(int id) //implementado para el case 7 del switch main
+        {
+            
+            bool usuarioExiste = false;
+            List<Usuario> usuariosBuscados = new List<Usuario>();
+
+            foreach (Usuario usuario in usuarios)
+            {
+                if (usuario.Id == id)
+                {
+
+                    usuarioExiste = true;
+                }
+
+            }
+
+            return usuarioExiste;
+        }
+        
+           /* bool usuarioExiste = true;
+            List<Usuario> usuariosBuscados = new List<Usuario>();
+
+            foreach (Usuario usuario in usuarios)
+            {
+                if (usuario.Id == id)
+                {
+
+                    usuariosBuscados.Add(usuario);
+                }
+
+            }
+
+            foreach (Usuario u in usuariosBuscados)
+            {
+
+                if (usuarioExiste)
+                {
+                    usuarioExiste = true;
+                }
+                else
+                {
+                    usuarioExiste = false;
+                }
+
+            }
+            return usuarioExiste;
+        }
+*/
+        public bool ExisteProductoPorId(int id) //implementado para el case 11 del switch main
+        {
+            bool productoExiste = false;
+            List<Producto> productosExistentes = new List<Producto>();
+
+            foreach (Producto producto in productos)
+            {
+                if (producto.Id == id)
+                {
+
+                    productoExiste = true;
+                }
+
+            }
+
+            return productoExiste;
         }
 
         public void MostrarUsuario()
@@ -500,7 +585,7 @@ namespace tp1_plataformas
         }
 
 
-        public void imprimirProductoEnPantalla()
+        public void MostrarProductoEnPantalla()
         {
             //Este es para debuguear la creacion de productos e imprimir en pantalla
             for (int i = 0; i < productos.Count; i++)
