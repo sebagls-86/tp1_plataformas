@@ -72,8 +72,9 @@ namespace tp1_plataformas
                     productos[i].Precio = Precio;
                     productos[i].Cantidad = Cantidad;
                     productos[i].Id = ID;
-                    //productos[i].Cat = ID_Categoria;
+                    productos[i].Cat = productos[ID_Categoria - 1].Cat; // :)
                    
+                   Console.WriteLine("Producto modificado con éxito " + Nombre + Precio + Cantidad + ID);
                 }
             }
 
