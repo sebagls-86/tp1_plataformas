@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace tp1_plataformas
 {
@@ -29,7 +27,7 @@ namespace tp1_plataformas
 
         public override string ToString()
         {
-            return $"{Id}{"-"} {Nombre} {"-"} {Precio} { "-"}" + 
+            return $"{Id}{"-"} {Nombre} {"-"} {Precio} { "-"}" +
                 $"{Cantidad} {"-"} {Cat}";
         }
     }

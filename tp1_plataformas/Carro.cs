@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace tp1_plataformas
 {
@@ -70,11 +69,12 @@ namespace tp1_plataformas
                     Productos.Remove(p);
                     seQuitoElProducto = true;
                 }
-                else {
+                else
+                {
                     Productos[p] = Productos[p] - cantidad;
                     seQuitoElProducto = true;
                 }
-                
+
             }
             else
             {
@@ -93,7 +93,8 @@ namespace tp1_plataformas
                 Console.WriteLine("Se vació la lista exitosamente.");
                 seVacio = true;
             }
-            else {
+            else
+            {
                 Console.WriteLine("La lista de productos está vacia.");
             }
             return seVacio;

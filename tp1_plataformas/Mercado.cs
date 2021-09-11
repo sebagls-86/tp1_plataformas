@@ -73,8 +73,8 @@ namespace tp1_plataformas
                     productos[i].Cantidad = Cantidad;
                     productos[i].Id = ID;
                     productos[i].Cat = productos[ID_Categoria - 1].Cat; // :)
-                   
-                   Console.WriteLine("Producto modificado con éxito " + Nombre + Precio + Cantidad + ID);
+
+                    Console.WriteLine("Producto modificado con éxito " + Nombre + Precio + Cantidad + ID);
                 }
             }
 
@@ -117,7 +117,7 @@ namespace tp1_plataformas
             }
 
             productos.Sort();
-            // var ordenada = productosBuscados.OrderBy(producto => producto.Nombre);
+            
             foreach (Producto p in productos)
             {
                 Console.WriteLine(p.Nombre + " - " + p.Precio);
@@ -245,7 +245,7 @@ namespace tp1_plataformas
 
         public bool ExisteUsuarioPorId(int id) //implementado para el case 7 del switch main
         {
-            
+
             bool usuarioExiste = false;
             List<Usuario> usuariosBuscados = new List<Usuario>();
 
@@ -261,36 +261,7 @@ namespace tp1_plataformas
 
             return usuarioExiste;
         }
-        
-           /* bool usuarioExiste = true;
-            List<Usuario> usuariosBuscados = new List<Usuario>();
 
-            foreach (Usuario usuario in usuarios)
-            {
-                if (usuario.Id == id)
-                {
-
-                    usuariosBuscados.Add(usuario);
-                }
-
-            }
-
-            foreach (Usuario u in usuariosBuscados)
-            {
-
-                if (usuarioExiste)
-                {
-                    usuarioExiste = true;
-                }
-                else
-                {
-                    usuarioExiste = false;
-                }
-
-            }
-            return usuarioExiste;
-        }
-*/
         public bool ExisteProductoPorId(int id) //implementado para el case 11 del switch main
         {
             bool productoExiste = false;
@@ -309,7 +280,26 @@ namespace tp1_plataformas
             return productoExiste;
         }
 
-        public void MostrarUsuario()
+        public bool ExisteCategoriaPorId(int id) //implementado para el case 7 del switch main
+        {
+
+            bool categoriaExiste = false;
+
+
+            foreach (Categoria categoria in categorias)
+            {
+                if (categoria.Id == id)
+                {
+
+                    categoriaExiste = true;
+                }
+
+            }
+
+            return categoriaExiste;
+        }
+
+        public void MostrarUsuarios()
         {
             Console.WriteLine("Estos son los Usuarios registrados:");
             for (int i = 0; i < usuarios.Count; i++)
@@ -372,6 +362,7 @@ namespace tp1_plataformas
                 {
                     categorias[i] = null;
                 }
+
             }
 
             return true;
@@ -587,7 +578,7 @@ namespace tp1_plataformas
 
         public void MostrarProductoEnPantalla()
         {
-            //Este es para debuguear la creacion de productos e imprimir en pantalla
+            
             for (int i = 0; i < productos.Count; i++)
             {
                 Console.WriteLine(productos[i].ToString());
